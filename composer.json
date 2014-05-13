@@ -12,7 +12,7 @@
         {
             "name": "Stijnhau",
             "email": "stijnhau@gmail.com"
-        },
+        }
     ],
     "require": {
         "php": ">=5.4",
