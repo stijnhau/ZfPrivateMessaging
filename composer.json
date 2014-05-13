@@ -1,0 +1,30 @@
+{
+    "name": "stijnhau/private-messaging",
+    "description": "A Zend Framework 2 module based on ZfcUser which enables private messaging between users",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "module",
+        "zendframework"
+    ],
+    "homepage": "https://github.com/stijnhau/PrivateMessaging",
+    "authors": [
+        {
+            "name": "Stijnhau",
+            "email": "stijnhau@gmail.com"
+        },
+    ],
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zendframework": "2.*",
+        "zf-commons/zfc-user":"1.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "PrivateMessaging": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
