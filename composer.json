@@ -17,10 +17,10 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "2.*",
-        "zf-commons/zfc-user":"1.0.*"
+        "zf-commons/zfc-user": "1.0.*"
     },
     "suggest": {
-        "rwoverdijk/assetmanager": "To use assets(js, css) provided by this module",
+        "rwoverdijk/assetmanager": "To use assets(js, css) provided by this module"
     },
     "autoload": {
         "psr-0": {
