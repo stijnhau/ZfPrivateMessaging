@@ -1,0 +1,32 @@
+<?php
+    $title = ucfirst($type) . " Messages";
+    $title = $this->escapeHtml($title);
+    $this->headTitle($title);
+    $this->headScript()->appendFile($this->basePath()."/private-messaging/js/messaging.js");
+    $this->headLink()->appendStylesheet($this->basePath()."/private-messaging/css/messaging.css");
+
+    echo $this->menu_helper();
+?>
+<h2><?= $title ?></h2>
+<br/>
+<?php if ($type === 'inbox' || $type === 'unread'): ?>
+    <div class="btn-group">
+        <a class="btn btn-default mark-all">Mark All</a>
+        <a class="btn btn-default unmark-all">Unmark All</a>
+        <a class="btn btn-default read-unread" data-new-value="read">Mark as read</a>
+        <a class="btn btn-default read-unread" data-new-value="unread">Mark as unread</a>
+    </div>
+    <br/>
+    <br/>
+<?php endif; ?>
+<?php foreach ($messages as $message): ?>
+    <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
+        <?php if ($type === 'inbox' || $type === 'unread'): ?>
+            <span><input type='checkbox' name='mark[]' multiple='multiple' class='mark'></span>
+        <?php endif; ?>
+        <span class='glyphicon  messaging-star' data-type='<?php echo $this->htMessagingComparer()->isStarred($message) ? 'star' : 'unstar' ?>'  title=''><i class='icon-star'></i></span>
+        <span class='glyphicon  messaging-imp' data-type='<?php echo $this->htMessagingComparer()->isImportant($message) ? 'ok' : 'unok' ?>'  title=''><i class='icon-ok'></i></span>
+        <span><a class="message_subject" href="<?php echo $this->url('htmessaging/info', array('message_id' => $message->message_id)); ?>"><?php echo $message->subject ?></a></span>
+        <span class="pull-right"><?php echo $this->htSmartTime()->fromDateTime($message->sent_date_time); ?></span>
+    </div>
+<?php endforeach; ?>

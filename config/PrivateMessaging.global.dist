@@ -1,0 +1,31 @@
+<?php
+
+return array(
+    'privatemessaging' => array(
+        /*
+         * Dow we want to show the navigation menu inside the messaging module.
+         * To go from inbox to outbox and to the compose dirtectly?
+         * Default value: TRUE
+         */
+        'showMenu' => true,
+    ),
+    'navigation' => array(
+        'PrivateMessaging' => array(
+            array(
+                'label' => 'Inbox',
+                'route' => 'privatemessaging',
+            ),
+            array(
+                'label'  => 'Outbox',
+                'route'  => 'privatemessaging/list',
+                'params' => array(
+                    'type'       => 'sent',
+                ),
+            ),
+            array(
+                'label' => 'Compose',
+                'route' => 'privatemessaging/compose',
+            ),
+        ),
+    ),
+);

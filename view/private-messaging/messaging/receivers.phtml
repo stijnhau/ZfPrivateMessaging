@@ -1,0 +1,29 @@
+<?php
+$title = $this->escapeHtml('Receivers of Message - ' . $message->getSubject());
+$this->headTitle($title);
+
+echo $this->menu_helper();
+?>
+<h2><?php echo $title; ?></h2>
+<br/>
+<table class="table">
+    <tr>
+        <th>S.N.</th>
+        <th>Name</th>
+        <th>DateTime</th>
+    </tr>
+    <?php foreach ($receivers as $i => $receiver): ?>
+        <tr>
+            <td><?php echo ($i + 1); ?></td>
+            <td><?php echo $this->zfcUserDisplayName($receiver); ?></td>
+            <?php foreach ($messageReceivers as $messageReceiver): ?>
+                <?php if ($messageReceiver->getReceiverId() == $receiver->getId()): ?>
+                    <td><?php echo $this->htSmartTime()->fromDateTime($messageReceiver->getSentDateTime()); ?></td>
+                    <?php break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+        </tr>
+    <?php endforeach; ?>
+</table>
+

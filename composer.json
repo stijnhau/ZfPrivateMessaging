@@ -19,6 +19,9 @@
         "zendframework/zendframework": "2.*",
         "zf-commons/zfc-user":"1.0.*"
     },
+    "suggest": {
+        "rwoverdijk/assetmanager": "To use assets(js, css) provided by this module",
+    },
     "autoload": {
         "psr-0": {
             "PrivateMessaging": "src/"

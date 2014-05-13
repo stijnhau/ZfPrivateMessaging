@@ -1,0 +1,30 @@
+<?php
+$title = "Compose Message";
+$this->headTitle($title);
+$this->headScript()->appendFile($this->basePath()."/private-messaging/js/select2.js");
+
+echo $this->menu_helper();
+?>
+<h2><?php echo $title; ?></h2>
+<br/>
+<?php if($messageSent): ?>
+<div class="alert alert-success">Message Sent Successfully</div>
+<?php endif; ?>
+<?php echo $this->form()->openTag($form); ?>
+<span><?php echo $this->formLabel($form->get('receiver_id')) ?></span><br/>
+<div><?php echo $this->formElement($form->get('receiver_id')).$this->formElementErrors($form->get('receiver_id')) ?></div>
+
+<span><?php echo $this->formLabel($form->get('subject')) ?></span><br/>
+<div><?php echo $this->formElement($form->get('subject')).$this->formElementErrors($form->get('subject')) ?></div>
+
+<span><?php echo $this->formLabel($form->get('message_text')) ?></span><br/>
+<div><?php echo $this->formElement($form->get('message_text')).$this->formElementErrors($form->get('message_text')) ?></div>
+<br/>
+<div><?php echo $this->formElement($form->get('submit')) ?></div>
+<?php echo $this->form()->closeTag($form); ?>
+<br/>
+<script type="text/javascript">
+    $(function () {
+        $("input[name=receiver_id]").select2();
+    });
+</script>

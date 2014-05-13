@@ -1,0 +1,9 @@
+/* Unread messages in list */
+div[data-is-received='0'] {
+    font-weight: bold;
+}
+
+/* Read messages in list */
+div[data-is-received='1'] {
+
+}

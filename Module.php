@@ -1,5 +1,5 @@
 <?php
-namespace HtMessaging;
+namespace PrivateMessaging;
 
 use Zend\Mvc\MvcEvent;
 
@@ -14,7 +14,7 @@ class Module
             $controllerClass = get_class($controller);
             $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
             if ($moduleNamespace === __NAMESPACE__ && !$sm->get('zfcuser_auth_service')->hasIdentity()) {
-                return $controller->plugin("redirect")->toRoute($sm->get('HtMessaging\ModuleOptions')->getLoginRoute());
+                return $controller->plugin("redirect")->toRoute($sm->get('PrivateMessaging\ModuleOptions')->getLoginRoute());
             }
         }, 100);
     }
@@ -44,9 +44,9 @@ class Module
     {
         return array(
             'invokables' => array(
-                'htSmartTime'           => 'HtMessaging\View\Helper\SmartTime',
-                'htmessagingComparer'   => 'HtMessaging\View\Helper\Comparer',
-                'menu_helper'           => 'HtMessaging\View\Helper\Menuhelper'
+                'privateSmartTime'           => 'PrivateMessaging\View\Helper\SmartTime',
+                'privatemessagingComparer'   => 'PrivateMessaging\View\Helper\Comparer',
+                'menu_helper'                => 'PrivateMessaging\View\Helper\Menuhelper'
             )
         );
     }
