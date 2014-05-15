@@ -176,7 +176,7 @@ class MessagingController extends AbstractActionController
         if (!$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);
-        }rivate
+        }
 
         $sender =  $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId());
 
