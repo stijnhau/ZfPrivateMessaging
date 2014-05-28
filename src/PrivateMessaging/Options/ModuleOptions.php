@@ -15,6 +15,8 @@ class ModuleOptions extends AbstractOptions implements
     protected $loginRoute = "zfcuser/login";
     protected $allowDeleteMessage = true;
     protected $showMenu = true;
+    protected $enableDeletelinkMessage = true;
+    protected $enableReplylinkMessage = true;
 
 	/**
      * @return the $sendEmailMessage
@@ -22,14 +24,6 @@ class ModuleOptions extends AbstractOptions implements
     public function getSendEmailMessage()
     {
         return $this->sendEmailMessage;
-    }
-
-	/**
-     * @param boolean $sendEmailMessage
-     */
-    public function setSendEmailMessage($sendEmailMessage)
-    {
-        $this->sendEmailMessage = $sendEmailMessage;
     }
 
 	/**
@@ -41,27 +35,11 @@ class ModuleOptions extends AbstractOptions implements
     }
 
 	/**
-     * @param boolean $enableMultipleReceivers
-     */
-    public function setEnableMultipleReceivers($enableMultipleReceivers)
-    {
-        $this->enableMultipleReceivers = $enableMultipleReceivers;
-    }
-
-	/**
      * @return the $messageEntityClass
      */
     public function getMessageEntityClass()
     {
         return $this->messageEntityClass;
-    }
-
-	/**
-     * @param string $messageEntityClass
-     */
-    public function setMessageEntityClass($messageEntityClass)
-    {
-        $this->messageEntityClass = $messageEntityClass;
     }
 
 	/**
@@ -73,27 +51,11 @@ class ModuleOptions extends AbstractOptions implements
     }
 
 	/**
-     * @param string $messageReceiverEntityClass
-     */
-    public function setMessageReceiverEntityClass($messageReceiverEntityClass)
-    {
-        $this->messageReceiverEntityClass = $messageReceiverEntityClass;
-    }
-
-	/**
      * @return the $loginRoute
      */
     public function getLoginRoute()
     {
         return $this->loginRoute;
-    }
-
-	/**
-     * @param string $loginRoute
-     */
-    public function setLoginRoute($loginRoute)
-    {
-        $this->loginRoute = $loginRoute;
     }
 
 	/**
@@ -105,19 +67,75 @@ class ModuleOptions extends AbstractOptions implements
     }
 
 	/**
-     * @param boolean $allowDeleteMessage
-     */
-    public function setAllowDeleteMessage($allowDeleteMessage)
-    {
-        $this->allowDeleteMessage = $allowDeleteMessage;
-    }
-
-	/**
      * @return the $showMenu
      */
     public function getShowMenu()
     {
         return $this->showMenu;
+    }
+
+	/**
+     * @return the $enableDeletelinkMessage
+     */
+    public function getEnableDeletelinkMessage()
+    {
+        return $this->enableDeletelinkMessage;
+    }
+
+	/**
+     * @return the $enableReplylinkMessage
+     */
+    public function getEnableReplylinkMessage()
+    {
+        return $this->enableReplylinkMessage;
+    }
+
+	/**
+     * @param boolean $sendEmailMessage
+     */
+    public function setSendEmailMessage($sendEmailMessage)
+    {
+        $this->sendEmailMessage = $sendEmailMessage;
+    }
+
+	/**
+     * @param boolean $enableMultipleReceivers
+     */
+    public function setEnableMultipleReceivers($enableMultipleReceivers)
+    {
+        $this->enableMultipleReceivers = $enableMultipleReceivers;
+    }
+
+	/**
+     * @param string $messageEntityClass
+     */
+    public function setMessageEntityClass($messageEntityClass)
+    {
+        $this->messageEntityClass = $messageEntityClass;
+    }
+
+	/**
+     * @param string $messageReceiverEntityClass
+     */
+    public function setMessageReceiverEntityClass($messageReceiverEntityClass)
+    {
+        $this->messageReceiverEntityClass = $messageReceiverEntityClass;
+    }
+
+	/**
+     * @param string $loginRoute
+     */
+    public function setLoginRoute($loginRoute)
+    {
+        $this->loginRoute = $loginRoute;
+    }
+
+	/**
+     * @param boolean $allowDeleteMessage
+     */
+    public function setAllowDeleteMessage($allowDeleteMessage)
+    {
+        $this->allowDeleteMessage = $allowDeleteMessage;
     }
 
 	/**
@@ -127,4 +145,23 @@ class ModuleOptions extends AbstractOptions implements
     {
         $this->showMenu = $showMenu;
     }
+
+	/**
+     * @param boolean $enableDeletelinkMessage
+     */
+    public function setEnableDeletelinkMessage($enableDeletelinkMessage)
+    {
+        $this->enableDeletelinkMessage = $enableDeletelinkMessage;
+    }
+
+	/**
+     * @param boolean $enableReplylinkMessage
+     */
+    public function setEnableReplylinkMessage($enableReplylinkMessage)
+    {
+        $this->enableReplylinkMessage = $enableReplylinkMessage;
+    }
+
+
+
 }

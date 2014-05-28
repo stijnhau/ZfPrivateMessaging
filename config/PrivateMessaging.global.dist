@@ -3,11 +3,32 @@
 return array(
     'privatemessaging' => array(
         /*
+         * The route that is uised for the login.
+         * Default value: zfcuser/login
+         */
+         // 'loginRoute' = "zfcuser/login";
+
+        /*
          * Dow we want to show the navigation menu inside the messaging module.
          * To go from inbox to outbox and to the compose dirtectly?
          * Default value: TRUE
          */
         'showMenu' => true,
+
+        /*
+         * Default value: TRUE
+         */
+        'enableDeletelinkMessage' => true,
+
+        /*
+         * Default value: TRUE
+         */
+        'enableReplylinkMessage' => true,
+
+        /*
+         * Default value: TRUE
+         */
+        'allowDeleteMessage' => true,
     ),
     'navigation' => array(
         'PrivateMessaging' => array(

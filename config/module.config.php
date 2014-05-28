@@ -92,7 +92,16 @@ return array(
                         'options' => array(
                             'route' => '/delete-receiver/:id[/]',
                             'defaults' => array(
-                                'action' => 'delete'
+                                'action' => 'deleteReceiver'
+                            )
+                        )
+                    ),
+                    'delete_sender' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/delete-sender/:id[/]',
+                            'defaults' => array(
+                                'action' => 'deletesender'
                             )
                         )
                     ),

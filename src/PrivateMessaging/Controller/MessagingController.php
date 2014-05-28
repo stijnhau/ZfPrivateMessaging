@@ -222,7 +222,6 @@ class MessagingController extends AbstractActionController
         return $vm;
     }
 
-    /**
     public function deleteReceiverAction()
     {
         if (!$this->getModuleOptions()->getAllowDeleteMessage()) {
@@ -243,7 +242,11 @@ class MessagingController extends AbstractActionController
 
         return $this->redirect()->toRoute(static::ROUTE_MESSAGING);
     }
-    */
+
+    public function deleteSenderAction()
+    {
+
+    }
 
     public function messageEditAction()
     {
