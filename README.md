@@ -26,3 +26,7 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 
 1. PHP >= 5.4.0
 2. ZfcUser >=1.0.0
+
+# Thanks
+Special thanks goes to https://github.com/hrevert/HtMessaging
+This module is forked from there because https://github.com/hrevert/HtMessaging decided to go an other way.
