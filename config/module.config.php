@@ -59,16 +59,6 @@ return array(
                             )
                         )
                     ),
-                    'sent_info' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/sent-info/:message_id[/]',
-                            'defaults' => array(
-                                'controller' => 'privatemessaging',
-                                'action' => 'sent-info'
-                            )
-                        )
-                    ),
                     'add-receiver' => array(
                         'type' => 'Segment',
                         'options' => array(

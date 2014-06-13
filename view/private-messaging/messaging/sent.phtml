@@ -10,7 +10,7 @@ echo $this->menu_helper();
     <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
         <span class='custom_tooltip' data-type='<?php echo $this->privateMessagingComparer()->isStarred($message) ? 'star' : 'unstar' ?>'  title=''><i class='icon-star'></i></span>
         <span class='custom_tooltip' data-type='<?php echo $this->privateMessagingComparer()->isImportant($message) ? 'ok' : 'unok' ?>'  title=''><i class='icon-ok'></i></span>
-        <span><a class="message_subject" href="<?php echo $this->url('privatemessaging/sent_info', array('message_id' => $message->id)); ?>"><?php echo $message->subject ?></a></span>
+        <span><a class="message_subject" href="<?php echo $this->url('privatemessaging/info', array('message_id' => $message->id)); ?>"><?php echo $message->subject ?></a></span>
         <span class="pull-right"><?php echo $this->privateSmartTime()->fromDateTime($message->created_date_time); ?></span>
     </div>
 <?php endforeach; ?>

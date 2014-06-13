@@ -158,7 +158,6 @@ class MessagingController extends AbstractActionController
      */
     public function infoAction()
     {
-
         $message_id = $this->params()->fromRoute('message_id', null);
         if (!$message_id) {
             return $this->notFoundAction();
@@ -180,45 +179,19 @@ class MessagingController extends AbstractActionController
 
         $sender =  $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId());
 
-        return new ViewModel(array(
-            'message' => $message,
-            'messageReceiver' => $messageReceiver,
-            'sender' => $sender,
-            'showMenu'  => $this->getModuleOptions()->getShowMenu(),
-        ));
-    }
-
-    /**
-     * this methods show message body of a sent message
-     */
-    public function sentInfoAction()
-    {
-        $message_id = $this->params()->fromRoute('message_id', null);
-        if (!$message_id) {
-            return $this->notFoundAction();
-        }
-
-        $message = $this->getMessageMapper()->findById($message_id);
-
-        // if message is not found or the user is not sender(i.e. not allowed to view messages sent by other users)
-        if (!$message or !$this->getMessagingService()->isValidSender($message)) {
-            return $this->notFoundAction();
-        }
-
-
         $messageReceivers = $this->getMessageReceiverMapper()->findByMessage($message);
 
         $vm = new ViewModel(array(
             'message' => $message,
+            'messageReceiver' => $messageReceiver,
             'messageReceivers' => $messageReceivers,
+            'sender' => $sender,
             'showMenu'  => $this->getModuleOptions()->getShowMenu(),
         ));
-
         if (count($messageReceivers) === 1) {
             $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId());
             $vm->setVariable('receiver', $receiver);
         }
-
         return $vm;
     }
 
