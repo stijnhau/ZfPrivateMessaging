@@ -17,7 +17,7 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "2.*",
-        "zf-commons/zfc-user": "1.0.*"
+        "zf-commons/zfc-user": "dev-master as 1.0.1"
     },
     "suggest": {
         "rwoverdijk/assetmanager": "To use assets(js, css) provided by this module"

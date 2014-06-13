@@ -5,6 +5,7 @@ namespace PrivateMessaging\Factory;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\FactoryInterface;
 use PrivateMessaging\Mapper\UserMapper;
+use Zend\Crypt\Password\Bcrypt;
 
 class UserMapperFactory implements FactoryInterface
 {
@@ -15,7 +16,7 @@ class UserMapperFactory implements FactoryInterface
         $mapper->setDbAdapter($serviceLocator->get('PrivateMessaging\DbAdapter'));
         $entityClass = $zfcuserOptions->getUserEntityClass();
         $mapper->setEntityPrototype(new $entityClass);
-        $mapper->setHydrator(new \ZfcUser\Mapper\UserHydrator());
+        $mapper->setHydrator(new \ZfcUser\Mapper\UserHydrator(new Bcrypt()));
         $mapper->setTableName($zfcuserOptions->getTableName());
         $mapper->setCurrentUser($serviceLocator->get('zfcuser_auth_service')->getIdentity());
 
