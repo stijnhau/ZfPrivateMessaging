@@ -1,5 +1,4 @@
 <?php
-//$subTitle = "Message By " . $this->zfcUserDisplayName($sender);
 $title = $message->getSubject();
 $title = $this->escapeHtml($title);
 $this->headTitle($title);
@@ -9,7 +8,13 @@ echo $this->menu_helper();
 <h2><?php echo $title; ?></h2>
 <br/>
 <div class="alert alert-info">
-    <span><b>Sender</b> : <?php echo $this->zfcUserDisplayName($sender); ?></span>
+    <span><b>Sender</b> : <?php echo $this->zfcUserDisplayName($sender); ?></span><br />
+    <?php if (isset($receiver)): ?>
+        <span><b>Receiver</b> : <?php echo $this->zfcUserDisplayName($receiver); ?></span>
+    <?php else: ?>
+        <span><b>Receivers Count:<?php echo count($messageReceivers); ?></b></span>
+        <span><a href="<?php echo $this->url('privatemessaging/receivers', array('message_id' => $message->getId())); ?>">View Receivers</a></span>
+    <?php endif; ?><br />
     <span class="pull-right">
         <?php echo $messageReceiver->getSentDateTime()->format('l, jS F Y  h:i A'); ?>
     </span>
