@@ -159,7 +159,9 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
      * @param HydratorInterface|null $hydrator
      * @return ResultInterface
      */
-    public function insert($messageReceiver, $tableName = null, HydratorInterface $hydrator = null)
+    public function insert($messageReceiver, /** @noinspection PhpUnusedParameterInspection */
+                           $tableName = null, /** @noinspection PhpUnusedParameterInspection */
+                           HydratorInterface $hydrator = null)
     {
         $messageReceiver->setSentDateTime(new \DateTime());
         $result = parent::insert($messageReceiver);

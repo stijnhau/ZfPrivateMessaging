@@ -3,7 +3,6 @@
 namespace PrivateMessaging\Mapper;
 
 use ZfcUser\Entity\UserInterface;
-use PrivateMessaging\Entity\MessageInterface;
 use Zend\Stdlib\Hydrator\HydratorInterface;
 
 interface MessageMapperInteface

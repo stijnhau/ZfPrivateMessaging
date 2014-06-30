@@ -16,6 +16,8 @@ class Module
             if ($moduleNamespace === __NAMESPACE__ && !$sm->get('zfcuser_auth_service')->hasIdentity()) {
                 return $controller->plugin("redirect")->toRoute($sm->get('PrivateMessaging\ModuleOptions')->getLoginRoute());
             }
+
+            return true;
         }, 100);
     }
 

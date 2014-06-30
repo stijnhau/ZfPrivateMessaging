@@ -3,7 +3,6 @@
 namespace PrivateMessaging\Mapper;
 
 use ZfcBase\Mapper\AbstractDbMapper;
-use PrivateMessaging\Entity\MessageInterface;
 use ZfcUser\Entity\UserInterface;
 use Zend\Db\Sql\Expression as SqlExpression;
 use Zend\Paginator\Adapter\DbSelect;
