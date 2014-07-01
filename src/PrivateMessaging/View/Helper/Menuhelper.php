@@ -5,6 +5,9 @@ use Zend\View\Helper\AbstractHelper;
 
 class Menuhelper extends AbstractHelper
 {
+    /** @noinspection PhpInconsistentReturnPointsInspection */
+    /** @noinspection PhpInconsistentReturnPointsInspection */
+    /** @noinspection PhpInconsistentReturnPointsInspection */
     public function __invoke()
     {
         if ($this->getView()->showMenu === true){

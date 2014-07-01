@@ -63,7 +63,10 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array('receiver_id' => $receiverId));
+        $select->where(array(
+            'receiver_id' => $receiverId,
+            'visible' => 1,
+        ));
         $this->joinWithMessage($select);
 
         if ($paginated) {
@@ -76,7 +79,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findStarredMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array('receiver_id' => $receiverId, 'starred_or_not' => MessageReceiver::STARRED));
+        $select->where(array(
+            'receiver_id' => $receiverId,
+            'starred_or_not' => MessageReceiver::STARRED,
+            'visible' => 1,
+        ));
         $this->joinWithMessage($select);
 
         if ($paginated) {
@@ -89,7 +96,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findImportantMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array('receiver_id' => $receiverId, 'important_or_not' => MessageReceiver::IMPORTANT));
+        $select->where(array(
+            'receiver_id' => $receiverId,
+            'important_or_not' => MessageReceiver::IMPORTANT,
+            'visible' => 1,
+        ));
         $this->joinWithMessage($select);
 
         if ($paginated) {
@@ -103,7 +114,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findUnreadMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array('receiver_id' => $receiverId, 'received_or_not' => MessageReceiver::NOT_RECEIVED));
+        $select->where(array(
+            'receiver_id' => $receiverId,
+            'received_or_not' => MessageReceiver::NOT_RECEIVED,
+            'visible' => 1,
+        ));
         $this->joinWithMessage($select);
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -116,7 +131,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findByReceiverIdAndMessageId($messageId, $receiverId, $joinWithMessage = false)
     {
         $select = $this->getSelect();
-        $select->where(array('receiver_id' => $receiverId, 'message_id' => $messageId));
+        $select->where(array(
+            'receiver_id' => $receiverId,
+            'message_id' => $messageId,
+            'visible' => 1,
+        ));
         if ($joinWithMessage) {
             $this->joinWithMessage($select);
             return $this->select($select, new ArrayObject, new ObjectProperty)->current();
@@ -140,7 +159,9 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
      * @param HydratorInterface|null $hydrator
      * @return ResultInterface
      */
-    public function insert($messageReceiver, $tableName = null, HydratorInterface $hydrator = null)
+    public function insert($messageReceiver, /** @noinspection PhpUnusedParameterInspection */
+                           $tableName = null, /** @noinspection PhpUnusedParameterInspection */
+                           HydratorInterface $hydrator = null)
     {
         $messageReceiver->setSentDateTime(new \DateTime());
         $result = parent::insert($messageReceiver);
@@ -168,7 +189,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
 
     public function deleteById($id)
     {
-        return parent::delete(array('id' => $id));
+        return parent::update(array("visible" => 0), array('id' => $id));
     }
 
     public function remove(MessageReceiverInterface $messageReceiver)

@@ -5,8 +5,7 @@ namespace PrivateMessaging\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
-use PrivateMessaging\Entity\Message;
-use PrivateMessaging\Entity\MessageReceiver;
+use Zend\Filter\Word\UnderscoreToCamelCase;
 
 class MessagingController extends AbstractActionController
 {
@@ -103,7 +102,18 @@ class MessagingController extends AbstractActionController
         $messages->setItemCountPerPage(static::NUM_OF_MSG_PER_PAGE);
         $messages->setCurrentPageNumber($this->params()->fromRoute('page', 1));
 
-        $viewModel->setVariable('messages', $messages);
+        $filter = new UnderscoreToCamelCase();
+        $funcName = "get" . ucfirst($filter->filter($this->getModuleOptions()->getUserColumn()));
+
+        $messages2 = array();
+        foreach ($messages as $message) {
+            $sender = $this->getUserMapper()->findById($message->sender_id);
+
+            $message["sender"] = $sender->$funcName();
+            $messages2[] = $message;
+        }
+
+        $viewModel->setVariable('messages', $messages2);
 
         return $viewModel;
     }
@@ -162,11 +172,17 @@ class MessagingController extends AbstractActionController
         if (!$message_id) {
             return $this->notFoundAction();
         }
-        $message = $this->getMessageMapper()->findById($message_id);
 
+        // Get the mapper of the message
+        $message = $this->getMessageMapper()->findById($message_id);
         if (!$message) {
             return $this->notFoundAction();
         }
+
+        // Get the options and the gettername for retrieving receiver and senderInfo
+        $options = $this->getModuleOptions();
+        $filter = new UnderscoreToCamelCase();
+        $funcName = "get" . ucfirst($filter->filter($options->getUserColumn()));
 
         $receiver = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
 
@@ -177,7 +193,7 @@ class MessagingController extends AbstractActionController
             $this->getMessageReceiverMapper()->update($messageReceiver);
         }
 
-        $sender =  $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId());
+        $sender = $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId())->$funcName();
 
         $messageReceivers = $this->getMessageReceiverMapper()->findByMessage($message);
 
@@ -191,6 +207,8 @@ class MessagingController extends AbstractActionController
         if (count($messageReceivers) === 1) {
             $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId());
             $vm->setVariable('receiver', $receiver);
+        } else {
+            $vm->setVariable('receivers', $messageReceivers);
         }
         return $vm;
     }

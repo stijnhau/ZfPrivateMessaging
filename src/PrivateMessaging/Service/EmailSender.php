@@ -40,10 +40,4 @@ class EmailSender implements ListenerAggregateInterface
             }
         }
     }
-
-    public function sendEmail(EventInterface $event)
-    {
-        $message = $e->getParam('message');
-        $receiver = $e->getParam('receiver');
-    }
 }

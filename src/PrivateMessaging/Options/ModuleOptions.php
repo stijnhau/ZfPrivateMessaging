@@ -17,6 +17,7 @@ class ModuleOptions extends AbstractOptions implements
     protected $showMenu = true;
     protected $enableDeletelinkMessage = true;
     protected $enableReplylinkMessage = true;
+    protected $userColumn = "email";
 
 	/**
      * @return the $sendEmailMessage
@@ -161,7 +162,20 @@ class ModuleOptions extends AbstractOptions implements
     {
         $this->enableReplylinkMessage = $enableReplylinkMessage;
     }
+    
+	/**
+     * @return the $userColumn
+     */
+    public function getUserColumn()
+    {
+        return $this->userColumn;
+    }
 
-
-
+	/**
+     * @param string $userColumn
+     */
+    public function setUserColumn($userColumn)
+    {
+        $this->userColumn = $userColumn;
+    }
 }

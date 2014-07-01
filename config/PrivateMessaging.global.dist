@@ -14,6 +14,13 @@ return array(
          * Default value: TRUE
          */
         'showMenu' => true,
+        
+        /*
+         * Dow we want to show the navigation menu inside the messaging module.
+         * To go from inbox to outbox and to the compose dirtectly?
+         * Default value: email
+         */
+        'userColumn' => "email",
 
         /*
          * Default value: TRUE
