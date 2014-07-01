@@ -168,16 +168,19 @@ class MessagingController extends AbstractActionController
      */
     public function infoAction()
     {
+        // Check if we have a message id in the route
         $message_id = $this->params()->fromRoute('message_id', null);
         if (!$message_id) {
             return $this->notFoundAction();
         }
-        $message = $this->getMessageMapper()->findById($message_id);
 
+        // Get the mapper of the message
+        $message = $this->getMessageMapper()->findById($message_id);
         if (!$message) {
             return $this->notFoundAction();
         }
 
+        // Get the options and the gettername for retrieving receiver and senderInfo
         $options = $this->getModuleOptions();
         $filter = new UnderscoreToCamelCase();
         $funcName = "get" . ucfirst($filter->filter($options->getUserColumn()));
@@ -198,13 +201,14 @@ class MessagingController extends AbstractActionController
         $vm = new ViewModel(array(
             'message' => $message,
             'messageReceiver' => $messageReceiver,
-            'messageReceivers' => $messageReceivers,
             'sender' => $sender,
             'showMenu'  => $options->getShowMenu(),
         ));
         if (count($messageReceivers) === 1) {
             $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId());
             $vm->setVariable('receiver', $receiver);
+        } else {
+            $vm->setVariable('receivers', $messageReceivers);
         }
         return $vm;
     }
