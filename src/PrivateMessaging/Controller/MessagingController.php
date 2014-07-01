@@ -178,6 +178,10 @@ class MessagingController extends AbstractActionController
             return $this->notFoundAction();
         }
 
+        $options = $this->getModuleOptions();
+        $filter = new UnderscoreToCamelCase();
+        $funcName = "get" . ucfirst($filter->filter($options->getUserColumn()));
+
         $receiver = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
 
         $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId($message_id, $receiver->getId());
@@ -187,7 +191,7 @@ class MessagingController extends AbstractActionController
             $this->getMessageReceiverMapper()->update($messageReceiver);
         }
 
-        $sender =  $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId());
+        $sender = $this->getServiceLocator()->get('privatemessaging_user_mapper')->findById($message->getSenderId())->$funcName();
 
         $messageReceivers = $this->getMessageReceiverMapper()->findByMessage($message);
 
@@ -196,7 +200,7 @@ class MessagingController extends AbstractActionController
             'messageReceiver' => $messageReceiver,
             'messageReceivers' => $messageReceivers,
             'sender' => $sender,
-            'showMenu'  => $this->getModuleOptions()->getShowMenu(),
+            'showMenu'  => $options->getShowMenu(),
         ));
         if (count($messageReceivers) === 1) {
             $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId());

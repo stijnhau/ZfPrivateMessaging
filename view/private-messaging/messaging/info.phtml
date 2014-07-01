@@ -8,7 +8,7 @@ echo $this->menu_helper();
 <h2><?php echo $title; ?></h2>
 <br/>
 <div class="alert alert-info">
-    <span><b>Sender</b> : <?php echo $this->zfcUserDisplayName($sender); ?></span><br />
+    <span><b>Sender</b> : <?php echo $sender ?></span><br />
     <?php if (isset($receiver)): ?>
         <span><b>Receiver</b> : <?php echo $this->zfcUserDisplayName($receiver); ?></span>
     <?php else: ?>
