@@ -154,9 +154,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     }
 
     /**
-     * @param object|array $entity
+     * @param                             $messageReceiver
      * @param string|TableIdentifier|null $tableName
-     * @param HydratorInterface|null $hydrator
+     * @param HydratorInterface|null      $hydrator
+     *
+     * @internal param array|object $entity
      * @return ResultInterface
      */
     public function insert($messageReceiver, /** @noinspection PhpUnusedParameterInspection */

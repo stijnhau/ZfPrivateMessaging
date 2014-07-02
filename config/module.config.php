@@ -59,15 +59,6 @@ return array(
                             )
                         )
                     ),
-                    'add-receiver' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/add-receiver/:message_id[/]',
-                            'defaults' => array(
-                                'action' => 'add-receiver'
-                            )
-                        )
-                    ),
                     'receivers' => array(
                         'type' => 'Segment',
                         'options' => array(

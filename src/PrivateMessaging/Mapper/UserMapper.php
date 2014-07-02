@@ -56,11 +56,12 @@ class UserMapper extends \ZfcUser\Mapper\User
         $this->userColumn = $userColumn;
     }
 
-	/**
+    /**
      * gets users list
      *
-     * @param array $columns         columns to fetch from user table
-     * @param Closure $Closure       to manipulate Select
+     * @param array                                     $columns columns to fetch from user table
+     * @param callable|\PrivateMessaging\Mapper\Closure $Closure $Closure       to manipulate Select
+     *
      * @return \Zend\Db\ResultSet\ResultSet
      */
     public function fetchAll($columns = null, \Closure $Closure = null)

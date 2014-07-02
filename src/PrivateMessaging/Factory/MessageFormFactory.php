@@ -19,7 +19,8 @@ class MessageFormFactory implements FactoryInterface
      * instantiates MessageForm and injects dependancies
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @param MessageForm
+     *
+     * @return \PrivateMessaging\Form\MessageForm
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

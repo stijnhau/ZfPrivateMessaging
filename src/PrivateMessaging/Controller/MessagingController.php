@@ -118,22 +118,6 @@ class MessagingController extends AbstractActionController
         return $viewModel;
     }
 
-
-    public function addReceiverAction()
-    {
-        $message_id = $this->params()->fromRoute('message_id', null);
-        if (!$message_id) {
-            return $this->notFoundAction();
-        }
-
-        $message = $this->getMessageMapper()->findById($message_id);
-
-        // if message is not found or the user is not sender(i.e. not allowed to view messages sent by other users)
-        if (!$message or !$this->isValidSender($message)) {
-            return $this->notFoundAction();
-        }
-    }
-
     public function receiversAction()
     {
         $message_id = $this->params()->fromRoute('message_id', null);

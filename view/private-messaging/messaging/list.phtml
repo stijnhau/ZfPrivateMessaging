@@ -22,7 +22,9 @@
 <?php foreach ($messages as $message): ?>
     <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
         <?php if ($type === 'inbox' || $type === 'unread'): ?>
-            <span><input type='checkbox' name='mark[]' multiple='multiple' class='mark'></span>
+            <span><label>
+                    <input type='checkbox' name='mark[]' multiple='multiple' class='mark'>
+                </label></span>
         <?php endif; ?>
         <span class='glyphicon  messaging-star' data-type='<?php echo $this->privateMessagingComparer()->isStarred($message) ? 'star' : 'unstar' ?>'  title=''><i class='icon-star'></i></span>
         <span class='glyphicon  messaging-imp' data-type='<?php echo $this->privateMessagingComparer()->isImportant($message) ? 'ok' : 'unok' ?>'  title=''><i class='icon-ok'></i></span>
