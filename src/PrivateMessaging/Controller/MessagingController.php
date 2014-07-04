@@ -189,7 +189,7 @@ class MessagingController extends AbstractActionController
             'showMenu'  => $options->getShowMenu(),
         ));
         if (count($messageReceivers) === 1) {
-            $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId());
+            $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId())->$funcName();
             $vm->setVariable('receiver', $receiver);
         } else {
             $vm->setVariable('receivers', $messageReceivers);

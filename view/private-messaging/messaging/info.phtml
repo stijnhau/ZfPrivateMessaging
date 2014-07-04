@@ -10,7 +10,7 @@ echo $this->menu_helper();
 <div class="alert alert-info">
     <span><b>Sender</b> : <?php echo $sender ?></span><br />
     <?php if (isset($receiver)): ?>
-        <span><b>Receiver</b> : <?php echo $this->zfcUserDisplayName($receiver); ?></span>
+        <span><b>Receiver</b> : <?php echo $receiver; ?></span>
     <?php else: ?>
         <span><b>Receivers Count:<?php echo count($receivers); ?></b></span>
         <span><a href="<?php echo $this->url('privatemessaging/receivers', array('message_id' => $message->getId())); ?>">View Receivers</a></span>
