@@ -143,7 +143,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
          return $this->select($select)->current();
     }
 
-    protected function joinWithMessage(Select $select, $columns = array('sender_id', 'subject'))
+    protected function joinWithMessage(Select $select, $columns = array('sender_id', 'subject', "created_date_time"))
     {
         $select->join(
             $this->getMessageTableName(),
@@ -165,7 +165,6 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
                            $tableName = null, /** @noinspection PhpUnusedParameterInspection */
                            HydratorInterface $hydrator = null)
     {
-        $messageReceiver->setSentDateTime(new \DateTime());
         $result = parent::insert($messageReceiver);
         $messageReceiver->setId($result->getGeneratedValue());
 

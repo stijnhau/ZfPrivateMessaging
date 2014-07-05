@@ -1,8 +1,6 @@
 <?php
 namespace PrivateMessaging\Entity;
 
-use DateTime;
-
 interface MessageReceiverInterface
 {
     const RECEIVED = 1;
@@ -20,10 +18,6 @@ interface MessageReceiverInterface
     public function setReceiverId($receiverId);
 
     public function getReceiverId();
-
-    public function setSentDateTime(DateTime $sentDateTime);
-
-    public function getSentDateTime();
 
     public function setReceivedOrNot($receivedOrNot);
 

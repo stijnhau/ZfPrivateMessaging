@@ -11,8 +11,6 @@ class MessageReceiver extends AbstractMessageEntity implements MessageReceiverIn
 
     protected $receiverId;
 
-    protected $sentDateTime;
-
     protected $receivedOrNot = self::NOT_RECEIVED;
 
     public function setMessageId($messageId)
@@ -33,16 +31,6 @@ class MessageReceiver extends AbstractMessageEntity implements MessageReceiverIn
     public function getReceiverId()
     {
         return $this->receiverId;
-    }
-
-    public function setSentDateTime(DateTime $sentDateTime)
-    {
-        $this->sentDateTime = $sentDateTime;
-    }
-
-    public function getSentDateTime()
-    {
-        return $this->sentDateTime;
     }
 
     public function setReceivedOrNot($receivedOrNot)

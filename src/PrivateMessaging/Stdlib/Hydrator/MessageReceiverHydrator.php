@@ -15,8 +15,6 @@ class MessageReceiverHydrator extends AbstractMessageHydrator
             throw new Exception\InvalidClassException('Instance of `PrivateMessaging\Entity\MessageReceiverInterface` expected!');
         }
 
-        $data['sent_date_time'] = new DateTime($data['sent_date_time']);
-
         return parent::hydrate($data, $object);
     }
 
@@ -27,8 +25,6 @@ class MessageReceiverHydrator extends AbstractMessageHydrator
         }
 
         $data = parent::extract($message);
-
-        $data['sent_date_time'] = $data['sent_date_time']->format(static::DATETIME_MYSQL);
 
         unset($data['is_received']);
         unset($data['is_starred']);

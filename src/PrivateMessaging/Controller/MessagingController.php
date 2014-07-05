@@ -169,11 +169,11 @@ class MessagingController extends AbstractActionController
         $filter = new UnderscoreToCamelCase();
         $funcName = "get" . ucfirst($filter->filter($options->getUserColumn()));
 
-        $receiver = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
+        $user = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
 
-        $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId($message_id, $receiver->getId());
+        $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId($message_id, $user->getId());
 
-        if (!$messageReceiver->isReceived()) {
+        if ($message instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);
         }

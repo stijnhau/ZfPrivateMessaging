@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS `message_receiver` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `message_id` int(10) unsigned NOT NULL,
   `receiver_id` int(11) unsigned NOT NULL,
-  `sent_date_time` datetime NOT NULL,
   `received_or_not` enum('1','0') NOT NULL DEFAULT '0',
   `starred_or_not` enum('1','0') NOT NULL DEFAULT '0',
   `important_or_not` enum('1','0') NOT NULL DEFAULT '0',
