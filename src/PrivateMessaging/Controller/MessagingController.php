@@ -118,35 +118,6 @@ class MessagingController extends AbstractActionController
         return $viewModel;
     }
 
-    public function receiversAction()
-    {
-        $message_id = $this->params()->fromRoute('message_id', null);
-        if (!$message_id) {
-            return $this->notFoundAction();
-        }
-
-        $message = $this->getMessageMapper()->findById($message_id);
-
-        // if message is not found or the user is not sender(i.e. not allowed to view messages sent by other users)
-        if (!$message or !$this->getMessagingService()->isValidSender($message)) {
-            return $this->notFoundAction();
-        }
-
-        $messageReceivers = $this->getMessageReceiverMapper()->findByMessage($message);
-
-        $messageReceivers = iterator_to_array($messageReceivers);
-
-        $receivers = $this->getMessagingService()->getReceivers($message, $messageReceivers);
-
-        return array(
-            'message' => $message,
-            'messageReceivers' => $messageReceivers,
-            'receivers' => $receivers,
-            'showMenu'  => $this->getModuleOptions()->getShowMenu(),
-        );
-
-    }
-
     /**
      * this methods show message body of a received message
      */
@@ -167,7 +138,8 @@ class MessagingController extends AbstractActionController
         // Get the options and the gettername for retrieving receiver and senderInfo
         $options = $this->getModuleOptions();
         $filter = new UnderscoreToCamelCase();
-        $funcName = "get" . ucfirst($filter->filter($options->getUserColumn()));
+        $filterName = $filter->filter($options->getUserColumn());
+        $funcName = "get" . ucfirst($filterName);
 
         $user = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
 
@@ -182,19 +154,28 @@ class MessagingController extends AbstractActionController
 
         $messageReceivers = $this->getMessageReceiverMapper()->findByMessage($message);
 
-        $vm = new ViewModel(array(
-            'message' => $message,
-            'messageReceiver' => $messageReceiver,
-            'sender' => $sender,
-            'showMenu'  => $options->getShowMenu(),
-        ));
         if (count($messageReceivers) === 1) {
             $receiver = $this->getUserMapper()->findById($messageReceivers->current()->getReceiverId())->$funcName();
-            $vm->setVariable('receiver', $receiver);
         } else {
-            $vm->setVariable('receivers', $messageReceivers);
+            $messageReceivers = iterator_to_array($messageReceivers);
+
+            $receivers = $this->getMessagingService()->getReceivers($message, $messageReceivers);
+
+            $receiver = "";
+            foreach ($receivers as $receiverLoop) {
+                $receiver .= $receiverLoop->$funcName() . ", ";
+            }
         }
-        return $vm;
+        return new ViewModel(
+            array(
+                'message' => $message,
+                'messageReceiver' => $messageReceiver,
+                'sender' => $sender,
+                'showMenu'  => $options->getShowMenu(),
+                'receiverCount' => count($messageReceivers),
+                'receiver' => $receiver,
+            )
+        );
     }
 
     public function deleteReceiverAction()

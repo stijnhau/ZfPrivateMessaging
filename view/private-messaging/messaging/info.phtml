@@ -1,5 +1,5 @@
 <?php
-$title = $message->getSubject();
+$title = $this->message->getSubject();
 $title = $this->escapeHtml($title);
 $this->headTitle($title);
 
@@ -8,18 +8,18 @@ echo $this->menu_helper();
 <h2><?php echo $title; ?></h2>
 <br/>
 <div class="alert alert-info">
-    <span><b>Sender</b> : <?php echo $sender ?></span><br />
-    <?php if (isset($receiver)): ?>
-        <span><b>Receiver</b> : <?php echo $receiver; ?></span>
+    <span><b>Sender</b>: <?php echo $this->sender ?></span><br />
+    <?php if ($this->receiverCount === 0): ?>
+        <span><b>Receiver</b>: <?php echo $this->receiver; ?></span>
     <?php else: ?>
-        <span><b>Receivers Count:<?php echo count($receivers); ?></b></span>
-        <span><a href="<?php echo $this->url('privatemessaging/receivers', array('message_id' => $message->getId())); ?>">View Receivers</a></span>
+        <span><b>Receivers Count: <?php echo $this->receiverCount; ?></b></span><br />
+        <span><b>Receivers: </b><?php echo $this->receiver; ?></span><br />
     <?php endif; ?><br />
-    <span class="pull-right">
-        <?php echo $message->getCreatedDateTime()->format('l, jS F Y  h:i A'); ?>
+    <span>
+        <?php echo $this->message->getCreatedDateTime()->format('l, jS F Y  h:i A'); ?>
     </span>
 </div>
 <br/>
 <div class="well">
-    <?php echo $this->escapeHtml($message->getMessageText()); ?>
+    <?php echo $this->escapeHtml($this->message->getMessageText()); ?>
 </div>

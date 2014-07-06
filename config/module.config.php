@@ -59,15 +59,6 @@ return array(
                             )
                         )
                     ),
-                    'receivers' => array(
-                        'type' => 'Segment',
-                        'options' => array(
-                            'route' => '/receivers/:message_id[/]',
-                            'defaults' => array(
-                                'action' => 'receivers'
-                            )
-                        )
-                    ),
                     'delete_receiver' => array(
                         'type' => 'Segment',
                         'options' => array(
