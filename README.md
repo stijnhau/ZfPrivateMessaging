@@ -25,16 +25,18 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 ### Requires
 
 1. PHP >= 5.4.0
-2. ZfcUser >=1.0.0
+2. ZfcUser >= 1.0.0
 
 ## Features
 1. Sending messages to multiple persons.
-2. Adjustable amount of messages in inbox and outbox(module based)[WIP]
+2. Adjustable amount of messages in inbox and outbox(module based)
 3. Removing messages from inbox.[WIP]
 4. Removing messages from outbox.[WIP]
 5. Show message time of time-ago.[WIP]
 6. Option to enable or disable menu (\Zend\Navigation).
 7. Configurable login route.
+8. Replylink inside message[todo]
+9. Multiple pages(usage of use \Zend\Paginator)[WIP]
 
 # Thanks
 Special thanks goes to https://github.com/hrevert/HtMessaging

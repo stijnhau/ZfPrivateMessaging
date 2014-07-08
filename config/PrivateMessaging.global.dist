@@ -14,7 +14,7 @@ return array(
          * Default value: TRUE
          */
         'showMenu' => true,
-        
+
         /*
          * Dow we want to show the navigation menu inside the messaging module.
          * To go from inbox to outbox and to the compose dirtectly?
@@ -36,6 +36,12 @@ return array(
          * Default value: TRUE
          */
         'allowDeleteMessage' => true,
+
+        /**
+         * Number of messages per page to show in view templates
+         * Default value: 20
+         */
+        'msgPerPage' => 20,
     ),
     'navigation' => array(
         'PrivateMessaging' => array(

@@ -13,11 +13,6 @@ class MessagingController extends AbstractActionController
     const ROUTE_MESSAGING = "privatemessaging";
 
     /**
-     * Number of messages per page to show in view templates
-     */
-    const NUM_OF_MSG_PER_PAGE = 20;
-
-    /**
      * @var PrivateMessaging\Mapper\MessageMapper
      */
     protected $messageMapper;
@@ -99,7 +94,7 @@ class MessagingController extends AbstractActionController
                 return $this->notFoundAction();
         }
 
-        $messages->setItemCountPerPage(static::NUM_OF_MSG_PER_PAGE);
+        $messages->setItemCountPerPage($this->getModuleOptions()->getMsgPerPage());
         $messages->setCurrentPageNumber($this->params()->fromRoute('page', 1));
 
         $filter = new UnderscoreToCamelCase();

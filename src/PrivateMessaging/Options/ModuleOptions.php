@@ -18,6 +18,23 @@ class ModuleOptions extends AbstractOptions implements
     protected $enableDeletelinkMessage = true;
     protected $enableReplylinkMessage = true;
     protected $userColumn = "email";
+    protected $msgPerPage = 20;
+
+	/**
+     * @return the $msgPerPage
+     */
+    public function getMsgPerPage()
+    {
+        return $this->msgPerPage;
+    }
+
+	/**
+     * @param number $msgPerPage
+     */
+    public function setMsgPerPage($msgPerPage)
+    {
+        $this->msgPerPage = $msgPerPage;
+    }
 
 	/**
      * @return the $sendEmailMessage
@@ -162,7 +179,7 @@ class ModuleOptions extends AbstractOptions implements
     {
         $this->enableReplylinkMessage = $enableReplylinkMessage;
     }
-    
+
 	/**
      * @return the $userColumn
      */
