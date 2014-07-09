@@ -18,8 +18,10 @@
     </div>
     <br/>
     <br/>
-<?php endif; ?>
-<?php foreach ($messages as $message): ?>
+<?php
+endif;
+
+foreach ($messages as $message): ?>
     <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
         <?php if ($type === 'inbox' || $type === 'unread'): ?>
             <span><label>
@@ -32,4 +34,17 @@
         <span><?php echo $message->sender;?></span>
         <span class="pull-right"><?php echo $this->privateSmartTime()->fromDateTime($message->created_date_time); ?></span>
     </div>
-<?php endforeach; ?>
+<?php endforeach;
+
+echo $this->paginationControl(
+    $this->messagesOrig,
+    'sliding',
+    // the partial to use to render the control
+    'private-messaging/partial/paginator.phtml',
+    // the route to link to when a user clicks a control link
+    array(
+        'route' => 'list',
+        'type' => $this->type,
+    )
+);
+?>

@@ -96,6 +96,7 @@ class MessagingController extends AbstractActionController
 
         $messages->setItemCountPerPage($this->getModuleOptions()->getMsgPerPage());
         $messages->setCurrentPageNumber($this->params()->fromRoute('page', 1));
+        $viewModel->setVariable('messagesOrig', $messages);
 
         $filter = new UnderscoreToCamelCase();
         $funcName = "get" . ucfirst($filter->filter($this->getModuleOptions()->getUserColumn()));

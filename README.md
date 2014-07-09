@@ -36,7 +36,9 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 6. Option to enable or disable menu (\Zend\Navigation).
 7. Configurable login route.
 8. Replylink inside message[todo]
-9. Multiple pages(usage of use \Zend\Paginator)[WIP]
+9. Multiple pages(usage of use \Zend\Paginator)
+10. Starred or not[todo]
+11. Important or not[todo]
 
 # Thanks
 Special thanks goes to https://github.com/hrevert/HtMessaging
