@@ -10,10 +10,10 @@ echo $this->menu_helper();
 <div class="alert alert-info">
     <span><b>Sender</b>: <?php echo $this->sender ?></span><br />
     <?php if ($this->receiverCount === 0): ?>
-        <span><b>Receiver</b>: <?php echo $this->receiver; ?></span>
+        <span><b>Receiver</b>: <?php echo $this->escapeHtml($this->receiver); ?></span>
     <?php else: ?>
         <span><b>Receivers Count: <?php echo $this->receiverCount; ?></b></span><br />
-        <span><b>Receivers: </b><?php echo $this->receiver; ?></span><br />
+        <span><b>Receivers: </b><?php echo $this->escapeHtml($this->receiver); ?></span><br />
     <?php endif; ?><br />
     <span>
         <?php echo $this->message->getCreatedDateTime()->format('l, jS F Y  h:i A'); ?>
