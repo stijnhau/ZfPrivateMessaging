@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\Filter\Word\UnderscoreToCamelCase;
+use PrivateMessaging\Entity\MessageReceiver;
 
 class MessagingController extends AbstractActionController
 {
@@ -141,7 +142,7 @@ class MessagingController extends AbstractActionController
 
         $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId($message_id, $user->getId());
 
-        if ($message instanceof MessageReceiver && !$messageReceiver->isReceived()) {
+        if ($messageReceiver instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);
         }
