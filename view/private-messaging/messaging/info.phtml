@@ -9,7 +9,7 @@ echo $this->menu_helper();
 <br/>
 <div class="alert alert-info">
     <span><b>Sender</b>: <?php echo $this->sender ?></span><br />
-    <?php if ($this->receiverCount === 0): ?>
+    <?php if ($this->receiverCount === 1): ?>
         <span><b>Receiver</b>: <?php echo $this->escapeHtml($this->receiver); ?></span>
     <?php else: ?>
         <span><b>Receivers Count: <?php echo $this->receiverCount; ?></b></span><br />
