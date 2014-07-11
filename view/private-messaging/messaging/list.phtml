@@ -21,15 +21,16 @@
 <?php
 endif;
 
-foreach ($messages as $message): ?>
+foreach ($messages as $message):
+?>
     <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
         <?php if ($type === 'inbox' || $type === 'unread'): ?>
             <span><label>
                     <input type='checkbox' name='mark[]' multiple='multiple' class='mark'>
                 </label></span>
-        <?php endif; ?>
-        <span class='glyphicon  messaging-star' data-type='<?php echo $this->privateMessagingComparer()->isStarred($message) ? 'star' : 'unstar' ?>'  title=''><i class='icon-star'></i></span>
-        <span class='glyphicon  messaging-imp' data-type='<?php echo $this->privateMessagingComparer()->isImportant($message) ? 'ok' : 'unok' ?>'  title=''><i class='icon-ok'></i></span>
+        <?php endif;
+        echo $this->privateMessagingComparer()->isStarred($message) ? "<i class='icon-star'></i>" : '';
+        echo $this->privateMessagingComparer()->isImportant($message) ? "<i class='icon-ok'></i>" : '' ?>
         <span><a class="message_subject" href="<?php echo $this->url('privatemessaging/info', array('message_id' => $message->message_id)); ?>"><?php echo $this->escapeHtml($message->subject) ?></a></span>
         <span><?php echo $this->escapeHtml($message->sender);?></span>
         <span class="pull-right"><?php echo $this->privateSmartTime()->fromDateTime($message->created_date_time); ?></span>

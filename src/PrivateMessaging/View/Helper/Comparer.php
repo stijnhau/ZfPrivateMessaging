@@ -11,16 +11,16 @@ class Comparer extends AbstractHelper
 {
     public function isReceived(ArrayObject $message)
     {
-        return $message->received_or_not === MessageReceiverInterface::RECEIVED;
+        return $message->received_or_not == MessageReceiverInterface::RECEIVED;
     }
 
     public function isStarred(ArrayObject $message)
     {
-        return $message->starred_or_not === AbstractMessageEntity::STARRED;
+        return $message->starred_or_not == AbstractMessageEntity::STARRED;
     }
 
     public function isImportant(ArrayObject $message)
     {
-        return $message->important_or_not === AbstractMessageEntity::IMPORTANT;
+        return $message->important_or_not == AbstractMessageEntity::IMPORTANT;
     }
 }
