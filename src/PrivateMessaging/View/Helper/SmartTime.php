@@ -28,8 +28,12 @@ class SmartTime extends AbstractHelper
 
     public function fromDateTime($dateTime)
     {
-        $dateTimeObject = new \DateTime($dateTime);
-        return $this->fromTimeStamp($dateTimeObject->getTimestamp());
+        if ($this->getView()->showTimeAgo === true) {
+            $dateTimeObject = new \DateTime($dateTime);
+            return $this->fromTimeStamp($dateTimeObject->getTimestamp());
+        } else {
+            return $dateTime;
+        }
     }
 
     protected function grammarDate($val, $sentence)

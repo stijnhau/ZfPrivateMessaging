@@ -42,6 +42,12 @@ return array(
          * Default value: 20
          */
         'msgPerPage' => 20,
+
+        /**
+         * Option to show the datetime value or a timeago value for date's.
+         * Default value: true
+         */
+        'showTimeAgo' => false,
     ),
     'navigation' => array(
         'PrivateMessaging' => array(

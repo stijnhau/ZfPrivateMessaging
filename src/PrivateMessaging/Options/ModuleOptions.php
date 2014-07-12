@@ -19,6 +19,23 @@ class ModuleOptions extends AbstractOptions implements
     protected $enableReplylinkMessage = true;
     protected $userColumn = "email";
     protected $msgPerPage = 20;
+    protected $showTimeAgo = false;
+
+	/**
+     * @return the $showTimeAgo
+     */
+    public function getShowTimeAgo()
+    {
+        return $this->showTimeAgo;
+    }
+
+	/**
+     * @param boolean $showTimeAgo
+     */
+    public function setShowTimeAgo($showTimeAgo)
+    {
+        $this->showTimeAgo = $showTimeAgo;
+    }
 
 	/**
      * @return the $msgPerPage

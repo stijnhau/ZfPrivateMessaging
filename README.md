@@ -32,7 +32,7 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 2. Adjustable amount of messages in inbox and outbox(module based)
 3. Removing messages from inbox.[WIP]
 4. Removing messages from outbox.[WIP]
-5. Show message time of time-ago.[WIP]
+5. Show message time of time-ago.
 6. Option to enable or disable menu (\Zend\Navigation).
 7. Configurable login route.
 8. Replylink inside message[todo]

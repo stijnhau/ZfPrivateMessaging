@@ -70,6 +70,7 @@ class MessagingController extends AbstractActionController
             array(
                 'type'      => $type,
                 'showMenu'  => $this->getModuleOptions()->getShowMenu(),
+                'showTimeAgo'  => $this->getModuleOptions()->getShowTimeAgo(),
             )
         );
 
@@ -171,6 +172,7 @@ class MessagingController extends AbstractActionController
                 'showMenu'  => $options->getShowMenu(),
                 'receiverCount' => count($messageReceivers),
                 'receiver' => $receiver,
+                'showTimeAgo'  => $this->getModuleOptions()->getShowTimeAgo(),
             )
         );
     }
