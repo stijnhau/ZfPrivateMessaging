@@ -10,6 +10,7 @@ echo $this->menu_helper();
 <?php if($messageSent): ?>
 <div class="alert alert-success">Message Sent Successfully</div>
 <?php endif; ?>
+<div class="well">
 <?php echo $this->form()->openTag($form); ?>
 <span><?php echo $this->formLabel($form->get('receiver_id')) ?></span><br/>
 <div><?php echo $this->formElement($form->get('receiver_id')).$this->formElementErrors($form->get('receiver_id')) ?></div>
@@ -22,7 +23,8 @@ echo $this->menu_helper();
 <br/>
 <div><?php echo $this->formElement($form->get('submit')) ?></div>
 <?php echo $this->form()->closeTag($form); ?>
-<br/>
+</div>
+
 <script type="text/javascript">
     $(function () {
         $("input[name=receiver_id]").select2();
