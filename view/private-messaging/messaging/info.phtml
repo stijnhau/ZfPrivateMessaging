@@ -19,7 +19,6 @@ echo $this->menu_helper();
         <?php echo $this->privateSmartTime()->fromDateTime($this->message->getCreatedDateTime()->format('l, jS F Y  h:i A')); ?>
     </span>
 </div>
-<br/>
 <div class="well">
     <?php echo $this->escapeHtml($this->message->getMessageText()); ?>
 </div>
