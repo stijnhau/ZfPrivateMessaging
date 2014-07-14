@@ -39,7 +39,7 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 9. Multiple pages(usage of use \Zend\Paginator)
 10. Starred or not[todo]
 11. Important or not[todo]
-12. Multilanguage [todo]
+12. Multilanguage [WIP]
 13. Unread messages in bold.
 
 # Thanks

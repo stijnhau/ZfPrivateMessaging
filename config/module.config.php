@@ -1,6 +1,15 @@
 <?php
-
 return array(
+    'translator' => array(
+        'translation_file_patterns' => array(
+            array(
+                'type' => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.mo',
+            ),
+        ),
+    ),
+
     'asset_manager' => array(
         'resolver_configs' => array(
             'paths' => array(
