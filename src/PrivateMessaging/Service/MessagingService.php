@@ -45,10 +45,28 @@ class MessagingService extends EventProvider implements ServiceLocatorAwareInter
 
         $this->getEventManager()->trigger(__FUNCTION__, $message, array('message' => $message, 'form' => $form));
         $this->getMessageMapper()->insert($message);
-        $this->getEventManager()->trigger(__FUNCTION__ . '.post', $message, array('message' => $message, 'form' => $form));
+        $this->getEventManager()->trigger(
+            __FUNCTION__ . '.post',
+            $message,
+            array(
+                'message' => $message,
+                'form' => $form,
+            )
+        );
 
         $this->addReceipents($message, $receivers);
-
+        
+        $elements = $form->getElements();
+    
+        foreach ($elements as $element) {
+        	if (($element instanceof \Zend\Form\Element\Text)
+                or ($element instanceof \Zend\Form\Element\Text)
+                or ($element instanceof \Zend\Form\Element\Textarea)
+                or ($element instanceof \Zend\Form\Element\Select)) {
+        		$element->setValue('');
+        	}
+        }
+        
         return true;
     }
 
