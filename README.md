@@ -11,16 +11,17 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 ## Installation
 
 ### Using composer
-
 1. Add `stijnhau/private-messaging` (version `dev-master`) to requirements
 2. Run `update` command on composer
-
+3. enable it in your `application.config.php` file.
+4. Add the mysql.sql file to your database
+5. Add the rest oif the data folder to your data folder
+   
 ### Manually
-
 1. Clone this project into your `./vendor/` directory and enable it in your
    `application.config.php` file.
-2. Clone `https://github.com/stijnhau/PrivateMessaging` into your `./vendor/` directory and enable it in your
-   `application.config.php` file.
+2. Add the mysql.sql file to your database
+3. Add the rest oif the data folder to your data folder
 
 ### Requires
 
