@@ -11,17 +11,32 @@ echo $this->menu_helper();
 <div class="alert alert-success">Message Sent Successfully</div>
 <?php endif; ?>
 <div class="well">
-<?php echo $this->form()->openTag($form); ?>
-<span><?php echo $this->formLabel($form->get('receiver_id')) ?></span><br/>
-<div><?php echo $this->formElement($form->get('receiver_id')).$this->formElementErrors($form->get('receiver_id')) ?></div>
+<?php
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action', $this->url('privatemessaging/compose'));
+$form->setAttribute('method', 'post');
 
-<span><?php echo $this->formLabel($form->get('subject')) ?></span><br/>
-<div><?php echo $this->formElement($form->get('subject')).$this->formElementErrors($form->get('subject')) ?></div>
+echo $this->form()->openTag($form);
 
-<span><?php echo $this->formLabel($form->get('message_text')) ?></span><br/>
-<div><?php echo $this->formElement($form->get('message_text')).$this->formElementErrors($form->get('message_text')) ?></div>
-<br/>
-<div><?php echo $this->formElement($form->get('submit')) ?></div>
+foreach ($form as $element): ?>
+        <?php if (!$element instanceof Zend\Form\Element\Button && !$element instanceof Zend\Form\Element\Submit && !$element instanceof Zend\Form\Element\Hidden): ?>
+            <span><?php echo $this->formLabel($element) ?></span>
+        <?php endif ?>
+        <div>
+        <?php if ($element instanceof Zend\Form\Element\Submit): ?>
+            <?php echo $this->formsubmit($element) ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Captcha): ?>
+            <?php echo $this->formCaptcha($element) . $this->formElementErrors($element) ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Select): ?>
+            <?php echo $this->formselect($element) . $this->formElementErrors($element) ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Textarea): ?>
+            <?php echo $this->formtextarea($element) . $this->formElementErrors($element) ?>
+        <?php else: ?>
+            <?php echo $this->formInput($element) . $this->formElementErrors($element) ?>
+        <?php endif ?>
+        </div>
+    <?php endforeach ?>
 <?php echo $this->form()->closeTag($form); ?>
 </div>
 
