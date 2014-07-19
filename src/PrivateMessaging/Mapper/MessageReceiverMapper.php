@@ -6,7 +6,6 @@ use ZfcBase\Mapper\AbstractDbMapper;
 use PrivateMessaging\Entity\MessageInterface;
 use PrivateMessaging\Entity\MessageReceiverInterface;
 use PrivateMessaging\Entity\MessageReceiver;
-use Zend\Db\Sql\Expression as SqlExpression;
 use Zend\Db\Sql\Select;
 use ArrayObject;
 use Zend\Stdlib\Hydrator\ObjectProperty;
@@ -17,7 +16,6 @@ use Zend\Paginator\Paginator;
 class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverMapperInterface
 {
     protected $tableName = "message_receiver";
-
     protected $messageTableName = "message";
 
     public function getTableName()
@@ -63,11 +61,14 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array(
-            'receiver_id' => $receiverId,
-            'visible' => 1,
-        ));
+        $select->where(
+            array(
+                'receiver_id' => $receiverId,
+                'visible' => 1,
+            )
+        );
         $this->joinWithMessage($select);
+        $select->order("id DESC");
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -79,12 +80,15 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findStarredMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array(
-            'receiver_id' => $receiverId,
-            'starred_or_not' => MessageReceiver::STARRED,
-            'visible' => 1,
-        ));
+        $select->where(
+            array(
+                'receiver_id' => $receiverId,
+                'starred_or_not' => MessageReceiver::STARRED,
+                'visible' => 1,
+            )
+        );
         $this->joinWithMessage($select);
+        $select->order("id DESC");
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -96,12 +100,15 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findImportantMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array(
-            'receiver_id' => $receiverId,
-            'important_or_not' => MessageReceiver::IMPORTANT,
-            'visible' => 1,
-        ));
+        $select->where(
+            array(
+                'receiver_id' => $receiverId,
+                'important_or_not' => MessageReceiver::IMPORTANT,
+                'visible' => 1,
+            )
+        );
         $this->joinWithMessage($select);
+        $select->order("id DESC");
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -114,12 +121,16 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findUnreadMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
-        $select->where(array(
-            'receiver_id' => $receiverId,
-            'received_or_not' => MessageReceiver::NOT_RECEIVED,
-            'visible' => 1,
-        ));
+        $select->where(
+            array(
+                'receiver_id' => $receiverId,
+                'received_or_not' => MessageReceiver::NOT_RECEIVED,
+                'visible' => 1,
+            )
+        );
         $this->joinWithMessage($select);
+        $select->order("id DESC");
+        
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
         }
@@ -131,16 +142,19 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function findByReceiverIdAndMessageId($messageId, $receiverId, $joinWithMessage = false)
     {
         $select = $this->getSelect();
-        $select->where(array(
-            'receiver_id' => $receiverId,
-            'message_id' => $messageId,
-            'visible' => 1,
-        ));
+        $select->where(
+            array(
+                'receiver_id' => $receiverId,
+                'message_id' => $messageId,
+                'visible' => 1,
+            )
+        );
         if ($joinWithMessage) {
             $this->joinWithMessage($select);
             return $this->select($select, new ArrayObject, new ObjectProperty)->current();
         }
-         return $this->select($select)->current();
+        $select->order("id DESC");
+        return $this->select($select)->current();
     }
 
     protected function joinWithMessage(Select $select, $columns = array('sender_id', 'subject', "created_date_time"))

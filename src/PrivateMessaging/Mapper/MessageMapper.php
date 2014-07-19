@@ -24,6 +24,7 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     {
         $select = $this->getSelect();
         $select->where(array('sender_id' => $senderId));
+        $select->order("id DESC");
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
