@@ -17,8 +17,25 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
 {
     protected $tableName = "message_receiver";
     protected $messageTableName = "message";
+    protected $sortDirection = "DESC";
 
-    public function getTableName()
+    /**
+     * @return the $sortDirection
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
+	/**
+     * @param string $sortDirection
+     */
+    public function setSortDirection($_sortDirection)
+    {
+        $this->sortDirection = $_sortDirection;
+    }
+
+	public function getTableName()
     {
         return $this->tableName;
     }
@@ -68,7 +85,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             )
         );
         $this->joinWithMessage($select);
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -88,7 +105,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             )
         );
         $this->joinWithMessage($select);
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -108,7 +125,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             )
         );
         $this->joinWithMessage($select);
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -129,7 +146,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             )
         );
         $this->joinWithMessage($select);
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
         
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -153,7 +170,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             $this->joinWithMessage($select);
             return $this->select($select, new ArrayObject, new ObjectProperty)->current();
         }
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
         return $this->select($select)->current();
     }
 

@@ -20,6 +20,23 @@ class ModuleOptions extends AbstractOptions implements
     protected $userColumn = "email";
     protected $msgPerPage = 20;
     protected $showTimeAgo = false;
+    protected $sortDirection= "DESC";
+
+	/**
+     * @return the $sortDirection
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
+	/**
+     * @param string $sortDirection
+     */
+    public function setSortDirection($sortDirection)
+    {
+        $this->sortDirection = $sortDirection;
+    }
 
 	/**
      * @return the $showTimeAgo

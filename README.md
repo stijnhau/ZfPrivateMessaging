@@ -42,7 +42,7 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 11. Important or not[todo]
 12. Multilanguage [WIP]
 13. Unread messages in bold.
-14. Configuration if newest or oldest message is first in lists. [TODO]
+14. Configuration if newest or oldest message is first in lists.
 
 # Thanks
 Special thanks goes to https://github.com/hrevert/HtMessaging

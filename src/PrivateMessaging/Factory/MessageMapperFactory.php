@@ -17,6 +17,7 @@ class MessageMapperFactory implements FactoryInterface
         $entityClass = $options->getMessageEntityClass();
         $mapper->setEntityPrototype(new $entityClass);
         $mapper->setHydrator(new MessageHydrator);
+        $mapper->setSortDirection($options->getSortDirection());
 
         return $mapper;
     }

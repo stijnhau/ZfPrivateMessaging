@@ -12,6 +12,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
 {
     protected $tableName = "message";
+    protected $sortDirection = "DESC";
 
     public function findById($messageId)
     {
@@ -24,7 +25,7 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     {
         $select = $this->getSelect();
         $select->where(array('sender_id' => $senderId));
-        $select->order("id DESC");
+        $select->order("id " . $this->getSortDirection());
 
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
@@ -63,5 +64,20 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     public function setTableName($tableName)
     {
         $this->tableName = $tableName;
+    }
+	/**
+     * @return the $sortDirection
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
+	/**
+     * @param string $sortDirection
+     */
+    public function setSortDirection($_sortDirection)
+    {
+        $this->sortDirection = $_sortDirection;
     }
 }

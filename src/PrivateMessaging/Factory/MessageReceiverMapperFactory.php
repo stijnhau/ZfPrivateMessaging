@@ -17,6 +17,7 @@ class MessageReceiverMapperFactory implements FactoryInterface
         $entityClass = $options->getMessageReceiverEntityClass();
         $mapper->setEntityPrototype(new $entityClass);
         $mapper->setHydrator(new MessageReceiverHydrator);
+        $mapper->setSortDirection($options->getSortDirection());
 
         return $mapper;        
     }   

@@ -48,6 +48,12 @@ return array(
          * Default value: true
          */
         'showTimeAgo' => false,
+        
+        /**
+         * Sorting direction for the list of messages.
+         * Default value: DESC
+         */
+        'sortDirection' => "DESC",
     ),
     'navigation' => array(
         'PrivateMessaging' => array(
