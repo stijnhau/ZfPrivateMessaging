@@ -8,7 +8,7 @@ echo $this->menu_helper();
 <h2><?php echo $title; ?></h2>
 <br/>
 <?php if($messageSent): ?>
-<div class="alert alert-success">Message Sent Successfully</div>
+<div class="alert alert-success"><?php echo $this->translate("Message Sent successfully"); ?></div>
 <?php endif; ?>
 <div class="well">
 <?php

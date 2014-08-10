@@ -11,10 +11,10 @@
 <br/>
 <?php if ($type === 'inbox' || $type === 'unread'): ?>
     <div class="btn-group">
-        <a class="btn btn-default mark-all">Mark All</a>
-        <a class="btn btn-default unmark-all">Unmark All</a>
-        <a class="btn btn-default read-unread" data-new-value="read">Mark as read</a>
-        <a class="btn btn-default read-unread" data-new-value="unread">Mark as unread</a>
+        <a class="btn btn-default mark-all"><?php echo $this->translate("Mark All"); ?></a>
+        <a class="btn btn-default unmark-all"><?php echo $this->translate("Unmark All"); ?></a>
+        <a class="btn btn-default read-unread" data-new-value="read"><?php echo $this->translate("Mark as read"); ?></a>
+        <a class="btn btn-default read-unread" data-new-value="unread"><?php echo $this->translate("Mark as unread"); ?></a>
     </div>
     <br/>
     <br/>

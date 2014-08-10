@@ -8,12 +8,12 @@ echo $this->menu_helper();
 <h2><?php echo $title; ?></h2>
 <br/>
 <div class="alert alert-info">
-    <span><b>Sender</b>: <?php echo $this->sender ?></span><br />
+    <span><b><?php echo $this->translate("Sender"); ?></b>: <?php echo $this->sender ?></span><br />
     <?php if ($this->receiverCount === 1): ?>
-        <span><b>Receiver</b>: <?php echo $this->escapeHtml($this->receiver); ?></span>
+        <span><b><?php echo $this->translate("Receiver"); ?></b>: <?php echo $this->escapeHtml($this->receiver); ?></span>
     <?php else: ?>
-        <span><b>Receivers Count: <?php echo $this->receiverCount; ?></b></span><br />
-        <span><b>Receivers: </b><?php echo $this->escapeHtml($this->receiver); ?></span><br />
+        <span><b><?php echo $this->translate("Receivers Count"); ?>: <?php echo $this->receiverCount; ?></b></span><br />
+        <span><b><?php echo $this->translate("Receivers"); ?>: </b><?php echo $this->escapeHtml($this->receiver); ?></span><br />
     <?php endif; ?><br />
     <span>
         <?php echo $this->privateSmartTime()->fromDateTime($this->message->getCreatedDateTime()->format('l, jS F Y  h:i A')); ?>
