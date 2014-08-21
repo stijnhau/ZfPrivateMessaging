@@ -10,7 +10,7 @@ class Menuhelper extends AbstractHelper
     {
         if ($this->getView()->showMenu === true){
             $message = "<div class='well'>
-                <h2>Menu</h2> " .
+                <h2>" . $this->getView()->translate("Menu") . "</h2> " .
             $this->getView()->navigation('PrivateMessaging_navigation')->menu() . "</div>";
 
             return $message;
