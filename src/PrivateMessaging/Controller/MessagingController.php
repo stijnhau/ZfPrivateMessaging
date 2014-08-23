@@ -90,7 +90,6 @@ class MessagingController extends AbstractActionController
                 break;
             case "sent":
                 $messages = $this->getMessageMapper()->findBySenderId($user->getId(), true);
-                $viewModel->setTemplate('private-messaging/messaging/sent');
                 break;
             default:
                 return $this->notFoundAction();
@@ -107,6 +106,9 @@ class MessagingController extends AbstractActionController
         foreach ($messages as $message) {
             $sender = $this->getUserMapper()->findById($message->sender_id);
 
+            if (!isset($message['message_id'])) {
+                $message['message_id'] = $message['id'];
+            }
             $message["sender"] = $sender->$funcName();
             $messages2[] = $message;
         }

@@ -23,7 +23,7 @@ endif;
 
 foreach ($messages as $message):
 ?>
-    <div class="well" data-message-id="<?php echo $message->id ?>" data-is-received="<?php echo $message->received_or_not ?>">
+    <div class="well" data-message-id="<?php echo $message->message_id ?>" data-is-received="<?php echo $message->received_or_not ?>">
         <?php if ($type === 'inbox' || $type === 'unread'): ?>
             <span><label>
                     <input type='checkbox' name='mark[]' multiple='multiple' class='mark'>
