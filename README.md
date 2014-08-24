@@ -31,18 +31,20 @@ A Zend Framework 2 module based on ZfcUser which enables private messaging betwe
 ## Features
 1. Sending messages to multiple persons.
 2. Adjustable amount of messages in inbox and outbox(module based)
-3. Removing messages from inbox.[WIP]
-4. Removing messages from outbox.[WIP]
-5. Show message time of time-ago.
-6. Option to enable or disable menu (\Zend\Navigation).
-7. Configurable login route.
-8. Replylink inside message[todo]
-9. Multiple pages(usage of use \Zend\Paginator)
-10. Starred or not[todo]
-11. Important or not[todo]
-12. Multilanguage [WIP]
-13. Unread messages in bold.
-14. Configuration if newest or oldest message is first in lists.
+3. Removing messages from inbox.[WIP](by checkbox)
+4. Removing messages from outbox.[WIP](By checkbox)
+5. Removing message from inside the message(received) [WIP]
+6. Removing message from inside the message(sent) [WIP]
+7. Show message time of time-ago.
+8. Option to enable or disable menu (\Zend\Navigation).
+9. Configurable login route.
+10. Replylink inside message[todo]
+11. Multiple pages(usage of use \Zend\Paginator)
+12. Starred or not[WIP]
+13. Important or not[WIP]
+14. Multilanguage (dutch and french ready) [WIP]
+15. Unread messages in bold.
+16. Configuration if newest or oldest message is first in lists.
 
 # Thanks
 Special thanks goes to https://github.com/hrevert/HtMessaging
