@@ -62,16 +62,19 @@ return array(
                     'info' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/info/:message_id',
+                            'route' => '/:message_id',
                             'defaults' => array(
                                 'action' => 'info'
-                            )
+                            ),
+                            'constraints' => array(
+                                'message_id' => '[0-9]*'
+                            ),
                         )
                     ),
                     'delete_receiver' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/delete-receiver/:id[/]',
+                            'route' => '/delete-receiver/:message_id[/]',
                             'defaults' => array(
                                 'action' => 'deleteReceiver'
                             )
@@ -80,9 +83,9 @@ return array(
                     'delete_sender' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/delete-sender/:id[/]',
+                            'route' => '/delete-sender/:message_id[/]',
                             'defaults' => array(
-                                'action' => 'deletesender'
+                                'action' => 'deleteSender'
                             )
                         )
                     ),
