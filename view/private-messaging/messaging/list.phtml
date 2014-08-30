@@ -9,6 +9,7 @@
 ?>
 <h2><?= $this->translate($title) ?></h2>
 <br/>
+<!--
 <?php if ($type === 'inbox' || $type === 'unread'): ?>
     <div class="btn-group">
         <a class="btn btn-default mark-all"><?php echo $this->translate("Mark All"); ?></a>
@@ -20,7 +21,9 @@
     <br/>
 <?php
 endif;
-
+?>
+-->
+<?php
 foreach ($messages as $message):
 ?>
     <div class="well" data-message-id="<?php echo $message->message_id ?>" data-is-received="<?php echo $message->received_or_not ?>">
