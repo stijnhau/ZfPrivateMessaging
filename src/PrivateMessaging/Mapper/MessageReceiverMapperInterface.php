@@ -16,13 +16,15 @@ interface MessageReceiverMapperInterface
 
     public function findByReceiverId($receiverId, $paginated = false);
 
+    /*
     public function findStarredMessagesByReceiverId($receiverId, $paginated = false);
 
     public function findImportantMessagesByReceiverId($receiverId, $paginated = false);
 
     public function findUnreadMessagesByReceiverId($receiverId, $paginated = false);
-
-    public function findByReceiverIdAndMessageId($messageId, $receiverId, $joinWithMessage = false);
+    */
+    
+    public function findByReceiverIdAndMessageId($receiverId, $messageId, $joinWithMessage = false);
 
     public function deleteById($id) ;
 

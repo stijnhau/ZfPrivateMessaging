@@ -143,7 +143,10 @@ class MessagingController extends AbstractActionController
 
         $user = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity();
 
-        $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId($message_id, $user->getId());
+        $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId(
+            $user->getId(),
+            $message_id
+        );
 
         if ($messageReceiver instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
@@ -189,20 +192,19 @@ class MessagingController extends AbstractActionController
         if (!$id) {
             return $this->notFoundAction();
         }
-
-        $messageReceiver = $this->getMessageReceiverMapper()->findById($id);
-        if (!$messageReceiver) {
-            return $this->notFoundAction();
-        }
         
-        if ($messageReceiver->getreceiverId() != $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId()) {
+        $userId = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId();
+
+        $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId(
+            $userId,
+            $id
+        );
+        if (!$messageReceiver) {
             /**
              * @todo create a vieuw for this issue.
              */
-            die();
-        }
-        
-        $this->getMessageReceiverMapper()->deleteById($id);
+        }        
+        $this->getMessageReceiverMapper()->deleteById($messageReceiver->getid());
 
         return $this->redirect()->toRoute(static::ROUTE_MESSAGING);
     }

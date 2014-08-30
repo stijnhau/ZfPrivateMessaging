@@ -94,6 +94,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
         return $this->select($select, new ArrayObject, new ObjectProperty);
     }
 
+    /*
     public function findStarredMessagesByReceiverId($receiverId, $paginated = false)
     {
         $select = $this->getSelect();
@@ -154,9 +155,9 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
 
         return $this->select($select, new ArrayObject, new ObjectProperty);
     }
+    */
 
-
-    public function findByReceiverIdAndMessageId($messageId, $receiverId, $joinWithMessage = false)
+    public function findByReceiverIdAndMessageId($receiverId, $messageId, $joinWithMessage = false)
     {
         $select = $this->getSelect();
         $select->where(
@@ -171,6 +172,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             return $this->select($select, new ArrayObject, new ObjectProperty)->current();
         }
         $select->order("id " . $this->getSortDirection());
+        
         return $this->select($select)->current();
     }
 
