@@ -185,7 +185,7 @@ class MessagingController extends AbstractActionController
             return $this->notFoundAction();
         }
 
-        $id = $this->params()->fromRoute('id', null);
+        $id = $this->params()->fromRoute('message_id', null);
         if (!$id) {
             return $this->notFoundAction();
         }
@@ -194,17 +194,26 @@ class MessagingController extends AbstractActionController
         if (!$messageReceiver) {
             return $this->notFoundAction();
         }
-
-        $this->getMessageReceiverMapper()->delete($messageReceiver);
+        
+        if ($messageReceiver->getreceiverId() != $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId()) {
+            /**
+             * @todo create a vieuw for this issue.
+             */
+            die();
+        }
+        
+        $this->getMessageReceiverMapper()->deleteById($id);
 
         return $this->redirect()->toRoute(static::ROUTE_MESSAGING);
     }
 
     public function deleteSenderAction()
     {
-
+        echo "Stap1";
+        return $this->notFoundAction();
     }
 
+    /*
     public function messageEditAction()
     {
         $type = $this->params()->fromRoute('type', null);
@@ -243,7 +252,9 @@ class MessagingController extends AbstractActionController
             'changed' => true
         ));
     }
-
+    */
+    
+    /*
     public function messageReceiverEditAction()
     {
         $type = $this->params()->fromRoute('type', null);
@@ -283,6 +294,7 @@ class MessagingController extends AbstractActionController
             'changed' => true
         ));
     }
+    */
 
     /**
      * gets MessageMapper
