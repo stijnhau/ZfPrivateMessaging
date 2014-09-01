@@ -22,6 +22,6 @@ echo $this->menu_helper();
 <div class="well">
     <?php echo $this->escapeHtml($this->message->getMessageText()); ?><br />
     <center>
-        <a href="#" class="btn btn-primary btn-lg" role="button"><i class="glyphicon glyphicon-trash"></i> <?php echo $this->translate("Delete")?></a>
+        <a href="<?php echo $this->url('privatemessaging/delete_receiver', array('message_id' => $this->message->getid())); ?>" class="btn btn-primary btn-lg" role="button"><i class="glyphicon glyphicon-trash"></i> <?php echo $this->translate("Delete")?></a>
     </center>
 </div>
