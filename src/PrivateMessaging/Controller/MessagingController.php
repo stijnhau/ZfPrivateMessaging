@@ -169,6 +169,16 @@ class MessagingController extends AbstractActionController
                 $receiver .= $receiverLoop->$funcName() . ", ";
             }
         }
+        
+        $showDeleteReceiver = false;
+        /*
+         * @todo check if the user has rezceived that message
+         */
+        if (($this->getModuleOptions()->getAllowDeleteMessage() === true)
+            && ($this->getModuleOptions()->getEnableDeletelinkMessage() === true)) {
+            $showDeleteReceiver = true;
+        }
+        
         return new ViewModel(
             array(
                 'message' => $message,
@@ -178,6 +188,7 @@ class MessagingController extends AbstractActionController
                 'receiverCount' => count($messageReceivers),
                 'receiver' => $receiver,
                 'showTimeAgo'  => $this->getModuleOptions()->getShowTimeAgo(),
+                'showDeleteReceiver' => $showDeleteReceiver,
             )
         );
     }
