@@ -171,11 +171,9 @@ class MessagingController extends AbstractActionController
         }
         
         $showDeleteReceiver = false;
-        /*
-         * @todo check if the user has rezceived that message
-         */
         if (($this->getModuleOptions()->getAllowDeleteMessage() === true)
-            && ($this->getModuleOptions()->getEnableDeletelinkMessage() === true)) {
+            && ($this->getModuleOptions()->getEnableDeletelinkMessage() === true)
+            && ($messageReceiver instanceof MessageReceiver)) {
             $showDeleteReceiver = true;
         }
         
