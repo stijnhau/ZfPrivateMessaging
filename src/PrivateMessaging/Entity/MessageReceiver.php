@@ -6,14 +6,28 @@ use DateTime;
 
 class MessageReceiver extends AbstractMessageEntity implements MessageReceiverInterface
 {
-
     protected $messageId;
-
     protected $receiverId;
-
     protected $receivedOrNot = self::NOT_RECEIVED;
+    protected $visible;
 
-    public function setMessageId($messageId)
+    /**
+     * @return the $visible
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+
+	/**
+     * @param field_type $visible
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+    }
+
+	public function setMessageId($messageId)
     {
         $this->messageId = $messageId;
     }
@@ -52,5 +66,4 @@ class MessageReceiver extends AbstractMessageEntity implements MessageReceiverIn
     {
         return $this->getReceivedOrNot() === static::RECEIVED;
     }
-
 }

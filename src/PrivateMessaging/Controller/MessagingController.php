@@ -148,6 +148,11 @@ class MessagingController extends AbstractActionController
             $message_id
         );
 
+        // If the message is deleted by the receiver block the opening of it
+        if (!($messageReceiver instanceof MessageReceiver) && (!($message->getSenderId() == $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId()))) {
+            return $this->notFoundAction();
+        }
+        
         if ($messageReceiver instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);
