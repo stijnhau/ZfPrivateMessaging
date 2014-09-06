@@ -153,6 +153,11 @@ class MessagingController extends AbstractActionController
             return $this->notFoundAction();
         }
         
+        // Check if message is delted by the sende. In that case sender can't open message anymore.
+        if ($message->getSenderId() == $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId() && $message->getVisible() == 0) {
+            return $this->notFoundAction();
+        }
+            
         if ($messageReceiver instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);

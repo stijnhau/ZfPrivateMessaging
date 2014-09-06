@@ -10,16 +10,29 @@ class Message implements MessageInterface
      * @var int id
      */
     protected $id;
-
     protected $senderId;
-
     protected $subject;
-
     protected $messageText;
-
     protected $createdDateTime;
+    protected $visible;
 
     /**
+     * @return the $visible
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+
+	/**
+     * @param field_type $visible
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+    }
+
+	/**
      * @return the $id
      */
     public function getId()
