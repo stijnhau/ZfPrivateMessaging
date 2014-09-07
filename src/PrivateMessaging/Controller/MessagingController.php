@@ -79,15 +79,6 @@ class MessagingController extends AbstractActionController
             case 'inbox':
                 $messages = $this->getMessageReceiverMapper()->findByReceiverId($user->getId(), true);
                 break;
-            case "starred":
-                $messages = $this->getMessageReceiverMapper()->findStarredMessagesByReceiverId($user->getId(), true);
-                break;
-            case "important":
-                $messages = $this->getMessageReceiverMapper()->findImportantMessagesByReceiverId($user->getId(), true);
-                break;
-            case "unread":
-                $messages = $this->getMessageReceiverMapper()->findUnreadMessagesByReceiverId($user->getId(), true);
-                break;
             case "sent":
                 $messages = $this->getMessageMapper()->findBySenderId($user->getId(), true);
                 break;
