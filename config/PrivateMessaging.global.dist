@@ -2,6 +2,12 @@
 
 return array(
     'privatemessaging' => array(
+    	/*
+         * Do we allow sending 1 message to multiple receivers?
+         * Default value: true
+         */
+    	'enableMultipleReceivers' => true
+
         /*
          * The route that is uised for the login.
          * Default value: zfcuser/login
@@ -9,15 +15,13 @@ return array(
          // 'loginRoute' = "zfcuser/login";
 
         /*
-         * Dow we want to show the navigation menu inside the messaging module.
+         * Do we want to show the navigation menu inside the messaging module.
          * To go from inbox to outbox and to the compose dirtectly?
          * Default value: TRUE
          */
         'showMenu' => true,
 
         /*
-         * Dow we want to show the navigation menu inside the messaging module.
-         * To go from inbox to outbox and to the compose dirtectly?
          * Default value: email
          */
         'userColumn' => "email",
@@ -48,7 +52,7 @@ return array(
          * Default value: true
          */
         'showTimeAgo' => false,
-        
+
         /**
          * Sorting direction for the list of messages.
          * Default value: DESC
