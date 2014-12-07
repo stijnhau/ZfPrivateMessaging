@@ -164,7 +164,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             array(
                 'receiver_id' => $receiverId,
                 'message_id' => $messageId,
-                'visible' => 1,
+                'message_receiver.visible' => 1,
             )
         );
         if ($joinWithMessage) {
@@ -198,6 +198,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
                            $tableName = null, /** @noinspection PhpUnusedParameterInspection */
                            HydratorInterface $hydrator = null)
     {
+        $messageReceiver->setVisible(1);
         $result = parent::insert($messageReceiver);
         $messageReceiver->setId($result->getGeneratedValue());
 

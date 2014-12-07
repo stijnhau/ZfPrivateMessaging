@@ -42,6 +42,7 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     public function insert($message, $tablename = null, HydratorInterface $hydrator = null)
     {
         $message->setCreatedDateTime(new \DateTime());
+        $message->setVisible(1);
         $result = parent::insert($message, $tablename, $hydrator);
         $message->setId($result->getGeneratedValue());
         return $result;
