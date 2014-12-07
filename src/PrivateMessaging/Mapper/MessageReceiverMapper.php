@@ -81,7 +81,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
         $select->where(
             array(
                 'receiver_id' => $receiverId,
-                'visible' => 1,
+                'message_receiver.visible' => 1,
             )
         );
         $this->joinWithMessage($select);
@@ -148,7 +148,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
         );
         $this->joinWithMessage($select);
         $select->order("id " . $this->getSortDirection());
-        
+
         if ($paginated) {
             return new Paginator(new DbSelect($select, $this->getDbAdapter()));
         }
@@ -172,7 +172,7 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
             return $this->select($select, new ArrayObject, new ObjectProperty)->current();
         }
         $select->order("id " . $this->getSortDirection());
-        
+
         return $this->select($select)->current();
     }
 
