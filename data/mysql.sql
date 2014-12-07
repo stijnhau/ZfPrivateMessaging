@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS `message` (
   `subject` varchar(64) NOT NULL,
   `message_text` blob NOT NULL,
   `created_date_time` datetime NOT NULL,
-  `visible` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `sender_id` (`sender_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
