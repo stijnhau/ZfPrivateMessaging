@@ -2,17 +2,17 @@
 
 return array(
     'privatemessaging' => array(
-    	/*
+        /*
          * Do we allow sending 1 message to multiple receivers?
          * Default value: true
          */
-    	'enableMultipleReceivers' => true
+        'enableMultipleReceivers' => true,
 
         /*
          * The route that is uised for the login.
          * Default value: zfcuser/login
          */
-         // 'loginRoute' = "zfcuser/login";
+         // 'loginRoute' = "zfcuser/login",
 
         /*
          * Do we want to show the navigation menu inside the messaging module.
