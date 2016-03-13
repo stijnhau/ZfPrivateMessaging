@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace PrivateMessaging\Form;
 
 use PrivateMessaging\Options\MultipleReceiversOptionsInterface;
@@ -33,7 +33,7 @@ class MessageForm extends ProvidesEventsForm
         );
         $this->add($receiver);
         $this->getEventManager()->trigger('init', $this);
-        
+
         $this->add(
             array(
                 'name' => 'subject',
@@ -53,7 +53,7 @@ class MessageForm extends ProvidesEventsForm
                 'type' => 'Hidden',
             )
         );
-        
+
         $this->add(
             array(
                 'name' => 'message_text',
@@ -73,7 +73,7 @@ class MessageForm extends ProvidesEventsForm
                 'type' => 'Submit',
                 'attributes' => array(
                     'class' => 'btn btn-lg btn-primary',
-                    "value" => "Send" 
+                    "value" => "Send"
                 )
             )
         );

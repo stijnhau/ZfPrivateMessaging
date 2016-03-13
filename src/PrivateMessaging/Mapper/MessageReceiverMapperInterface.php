@@ -9,11 +9,8 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 interface MessageReceiverMapperInterface
 {
     public function findById($id);
-
     public function findByMessageId($messageId);
-
     public function findByMessage(MessageInterface $message);
-
     public function findByReceiverId($receiverId, $paginated = false);
 
     /*
@@ -23,10 +20,8 @@ interface MessageReceiverMapperInterface
 
     public function findUnreadMessagesByReceiverId($receiverId, $paginated = false);
     */
-    
+
     public function findByReceiverIdAndMessageId($receiverId, $messageId, $joinWithMessage = false);
-
-    public function deleteById($id) ;
-
+    public function deleteById($id);
     public function remove(MessageReceiverInterface $messageReceiver);
 }

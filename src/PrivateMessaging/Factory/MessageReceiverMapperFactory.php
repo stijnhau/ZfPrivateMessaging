@@ -2,10 +2,10 @@
 
 namespace PrivateMessaging\Factory;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\FactoryInterface;
 use PrivateMessaging\Mapper\MessageReceiverMapper;
 use PrivateMessaging\Stdlib\Hydrator\MessageReceiverHydrator;
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class MessageReceiverMapperFactory implements FactoryInterface
 {
@@ -19,6 +19,6 @@ class MessageReceiverMapperFactory implements FactoryInterface
         $mapper->setHydrator(new MessageReceiverHydrator);
         $mapper->setSortDirection($options->getSortDirection());
 
-        return $mapper;        
-    }   
+        return $mapper;
+    }
 }

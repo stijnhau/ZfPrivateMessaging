@@ -1,22 +1,28 @@
 <?php
-
 namespace PrivateMessaging\Entity;
 
 use DateTime;
 
 class Message implements MessageInterface
 {
+
     /**
      * @var int id
      */
     protected $id;
+
     protected $senderId;
+
     protected $subject;
+
     protected $messageText;
+
     protected $createdDateTime;
+
     protected $visible;
 
     /**
+     *
      * @return the $visible
      */
     public function getVisible()
@@ -24,7 +30,7 @@ class Message implements MessageInterface
         return $this->visible;
     }
 
-	/**
+    /**
      * @param field_type $visible
      */
     public function setVisible($visible)
@@ -32,7 +38,7 @@ class Message implements MessageInterface
         $this->visible = $visible;
     }
 
-	/**
+    /**
      * @return the $id
      */
     public function getId()
@@ -40,7 +46,7 @@ class Message implements MessageInterface
         return $this->id;
     }
 
-	/**
+    /**
      * @param number $id
      */
     public function setId($id)
@@ -48,7 +54,7 @@ class Message implements MessageInterface
         $this->id = $id;
     }
 
-	public function setSenderId($senderId)
+    public function setSenderId($senderId)
     {
         $this->senderId = $senderId;
     }
@@ -87,5 +93,4 @@ class Message implements MessageInterface
     {
         return $this->createdDateTime;
     }
-
 }

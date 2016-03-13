@@ -55,18 +55,19 @@ class MessagingService extends EventProvider implements ServiceLocatorAwareInter
         );
 
         $this->addReceipents($message, $receivers);
-        
+
         $elements = $form->getElements();
-    
+
         foreach ($elements as $element) {
-        	if (($element instanceof \Zend\Form\Element\Text)
+            if (($element instanceof \Zend\Form\Element\Text)
                 or ($element instanceof \Zend\Form\Element\Text)
                 or ($element instanceof \Zend\Form\Element\Textarea)
-                or ($element instanceof \Zend\Form\Element\Select)) {
-        		$element->setValue('');
-        	}
+                or ($element instanceof \Zend\Form\Element\Select)
+            ) {
+                $element->setValue('');
+            }
         }
-        
+
         return true;
     }
 
@@ -79,7 +80,7 @@ class MessagingService extends EventProvider implements ServiceLocatorAwareInter
      */
     public function addReceipents(MessageInterface $message, array $receiverIds)
     {
-        $receivers = $this->getServiceLocator()->get('privatemessaging_user_mapper')->fetchAll(null, function(Select $select) use ($receiverIds) {
+        $receivers = $this->getServiceLocator()->get('privatemessaging_user_mapper')->fetchAll(null, function (Select $select) use ($receiverIds) {
             $select->where(array('user_id' => $receiverIds));
         });
 
@@ -100,7 +101,7 @@ class MessagingService extends EventProvider implements ServiceLocatorAwareInter
      * @param UserInterface $receiver
      * @return void
      */
-    protected  function sendMessage(MessageInterface $message, UserInterface $receiver)
+    protected function sendMessage(MessageInterface $message, UserInterface $receiver)
     {
         $messageReceiverEntityClass = $this->getOptions()->getMessageReceiverEntityClass();
         $messageReceiver = new $messageReceiverEntityClass;
@@ -123,7 +124,7 @@ class MessagingService extends EventProvider implements ServiceLocatorAwareInter
             $userIdList[] = $messageReceiver->getReceiverId();
         }
 
-        return $this->getUserMapper()->fetchAll(null, function(Select $select) use ($userIdList) {
+        return $this->getUserMapper()->fetchAll(null, function (Select $select) use ($userIdList) {
             $select->where(array('user_id' => $userIdList));
         });
 

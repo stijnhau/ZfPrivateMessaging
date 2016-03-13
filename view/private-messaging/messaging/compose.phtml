@@ -7,7 +7,7 @@ echo $this->menu_helper();
 ?>
 <h2><?php echo $title; ?></h2>
 <br/>
-<?php if($messageSent): ?>
+<?php if ($messageSent) : ?>
 <div class="alert alert-success"><?php echo $this->translate("Message Sent successfully"); ?></div>
 <?php endif; ?>
 <div class="well">
@@ -19,20 +19,22 @@ $form->setAttribute('method', 'post');
 
 echo $this->form()->openTag($form);
 
-foreach ($form as $element): ?>
-        <?php if (!$element instanceof Zend\Form\Element\Button && !$element instanceof Zend\Form\Element\Submit && !$element instanceof Zend\Form\Element\Hidden): ?>
+foreach ($form as $element) : ?>
+        <?php if (!$element instanceof Zend\Form\Element\Button
+            && !$element instanceof Zend\Form\Element\Submit
+            && !$element instanceof Zend\Form\Element\Hidden) : ?>
             <span><?php echo $this->formLabel($element) ?></span>
         <?php endif ?>
         <div>
-        <?php if ($element instanceof Zend\Form\Element\Submit): ?>
+        <?php if ($element instanceof Zend\Form\Element\Submit) : ?>
             <?php echo $this->formsubmit($element) ?>
-        <?php elseif ($element instanceof Zend\Form\Element\Captcha): ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Captcha) : ?>
             <?php echo $this->formCaptcha($element) . $this->formElementErrors($element) ?>
-        <?php elseif ($element instanceof Zend\Form\Element\Select): ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Select) : ?>
             <?php echo $this->formselect($element) . $this->formElementErrors($element) ?>
-        <?php elseif ($element instanceof Zend\Form\Element\Textarea): ?>
+        <?php elseif ($element instanceof Zend\Form\Element\Textarea) : ?>
             <?php echo $this->formtextarea($element) . $this->formElementErrors($element) ?>
-        <?php else: ?>
+        <?php else : ?>
             <?php echo $this->formInput($element) . $this->formElementErrors($element) ?>
         <?php endif ?>
         </div>

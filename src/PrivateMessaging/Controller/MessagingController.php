@@ -74,8 +74,7 @@ class MessagingController extends AbstractActionController
             )
         );
 
-        switch ($type)
-        {
+        switch ($type) {
             case 'inbox':
                 $messages = $this->getMessageReceiverMapper()->findByReceiverId($user->getId(), true);
                 break;
@@ -143,12 +142,12 @@ class MessagingController extends AbstractActionController
         if (!($messageReceiver instanceof MessageReceiver) && (!($message->getSenderId() == $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId()))) {
             return $this->notFoundAction();
         }
-        
+
         // Check if message is delted by the sende. In that case sender can't open message anymore.
         if ($message->getSenderId() == $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId() && $message->getVisible() == 0) {
             return $this->notFoundAction();
         }
-            
+
         if ($messageReceiver instanceof MessageReceiver && !$messageReceiver->isReceived()) {
             $messageReceiver->setReceived();
             $this->getMessageReceiverMapper()->update($messageReceiver);
@@ -170,14 +169,14 @@ class MessagingController extends AbstractActionController
                 $receiver .= $receiverLoop->$funcName() . ", ";
             }
         }
-        
+
         $showDeleteReceiver = false;
         if (($this->getModuleOptions()->getAllowDeleteMessage() === true)
             && ($this->getModuleOptions()->getEnableDeletelinkMessage() === true)
             && ($messageReceiver instanceof MessageReceiver)) {
             $showDeleteReceiver = true;
         }
-        
+
         return new ViewModel(
             array(
                 'message' => $message,
@@ -202,7 +201,7 @@ class MessagingController extends AbstractActionController
         if (!$id) {
             return $this->notFoundAction();
         }
-        
+
         $userId = $this->getServiceLocator()->get('zfcuser_auth_service')->getIdentity()->getId();
 
         $messageReceiver = $this->getMessageReceiverMapper()->findByReceiverIdAndMessageId(
@@ -213,7 +212,7 @@ class MessagingController extends AbstractActionController
             /**
              * @todo create a vieuw for this issue.
              */
-        }        
+        }
         $this->getMessageReceiverMapper()->deleteById($messageReceiver->getid());
 
         return $this->redirect()->toRoute(static::ROUTE_MESSAGING);
@@ -265,7 +264,7 @@ class MessagingController extends AbstractActionController
         ));
     }
     */
-    
+
     /*
     public function messageReceiverEditAction()
     {

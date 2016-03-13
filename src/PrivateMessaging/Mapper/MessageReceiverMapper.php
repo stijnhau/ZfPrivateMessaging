@@ -27,15 +27,15 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
         return $this->sortDirection;
     }
 
-	/**
+    /**
      * @param string $sortDirection
      */
-    public function setSortDirection($_sortDirection)
+    public function setSortDirection($sortDirection)
     {
-        $this->sortDirection = $_sortDirection;
+        $this->sortDirection = $sortDirection;
     }
 
-	public function getTableName()
+    public function getTableName()
     {
         return $this->tableName;
     }
@@ -194,10 +194,11 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
      * @internal param array|object $entity
      * @return ResultInterface
      */
-    public function insert($messageReceiver, /** @noinspection PhpUnusedParameterInspection */
-                           $tableName = null, /** @noinspection PhpUnusedParameterInspection */
-                           HydratorInterface $hydrator = null)
-    {
+    public function insert(
+        $messageReceiver,
+        $tableName = null,
+        HydratorInterface $hydrator = null
+    ) {
         $messageReceiver->setVisible(1);
         $result = parent::insert($messageReceiver);
         $messageReceiver->setId($result->getGeneratedValue());
@@ -231,5 +232,4 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     {
         return $this->deleteById($messageReceiver->getId());
     }
-
 }

@@ -48,7 +48,7 @@ class UserMapper extends \ZfcUser\Mapper\User
         return $this->userColumn;
     }
 
-	/**
+    /**
      * @param string $userColumn
      */
     public function setUserColumn($userColumn)
@@ -85,8 +85,8 @@ class UserMapper extends \ZfcUser\Mapper\User
     {
         $filter = new UnderscoreToCamelCase();
         $funcName = "get" . ucfirst($filter->filter($this->getUserColumn()));
-        
-        $resultSet =  $this->fetchAll(array('user_id', $this->getUserColumn()), function(Select $select) {
+
+        $resultSet =  $this->fetchAll(array('user_id', $this->getUserColumn()), function (Select $select) {
             $select->where->notEqualTo('user_id', $this->getCurrentUser()->getId());
         });
 
@@ -97,5 +97,4 @@ class UserMapper extends \ZfcUser\Mapper\User
 
         return $options;
     }
-
 }

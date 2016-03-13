@@ -1,8 +1,5 @@
 <?php
-
 namespace PrivateMessaging\Entity;
-
-use DateTime;
 
 class MessageReceiver extends AbstractMessageEntity implements MessageReceiverInterface
 {
@@ -19,7 +16,7 @@ class MessageReceiver extends AbstractMessageEntity implements MessageReceiverIn
         return $this->visible;
     }
 
-	/**
+    /**
      * @param field_type $visible
      */
     public function setVisible($visible)
@@ -27,7 +24,7 @@ class MessageReceiver extends AbstractMessageEntity implements MessageReceiverIn
         $this->visible = $visible;
     }
 
-	public function setMessageId($messageId)
+    public function setMessageId($messageId)
     {
         $this->messageId = $messageId;
     }

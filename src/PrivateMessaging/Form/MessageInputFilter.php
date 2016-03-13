@@ -75,7 +75,7 @@ class MessageInputFilter extends ProvidesEventsInputFilter
                     array(
                         'name' => 'Callback',
                         'options' => array(
-                            'callback' => function($values) {
+                            'callback' => function ($values) {
                                 $output = array();
                                 $filter = new Int();
                                 foreach ($values as $value) {

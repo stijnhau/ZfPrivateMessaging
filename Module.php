@@ -5,20 +5,24 @@ use Zend\Mvc\MvcEvent;
 
 class Module
 {
-
     public function onBootstrap(MvcEvent $e)
     {
         $sm = $e->getApplication()->getServiceManager();
-        $e->getApplication()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Controller\AbstractController', MvcEvent::EVENT_DISPATCH, function($e) use ($sm) {
-            $controller      = $e->getTarget();
-            $controllerClass = get_class($controller);
-            $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
-            if ($moduleNamespace === __NAMESPACE__ && !$sm->get('zfcuser_auth_service')->hasIdentity()) {
-                return $controller->plugin("redirect")->toRoute($sm->get('PrivateMessaging\ModuleOptions')->getLoginRoute());
-            }
+        $e->getApplication()->getEventManager()->getSharedManager()->attach(
+            'Zend\Mvc\Controller\AbstractController',
+            MvcEvent::EVENT_DISPATCH,
+            function ($e) use ($sm) {
+                $controller      = $e->getTarget();
+                $controllerClass = get_class($controller);
+                $moduleNamespace = substr($controllerClass, 0, strpos($controllerClass, '\\'));
+                if ($moduleNamespace === __NAMESPACE__ && !$sm->get('zfcuser_auth_service')->hasIdentity()) {
+                    return $controller->plugin("redirect")->toRoute($sm->get('PrivateMessaging\ModuleOptions')->getLoginRoute());
+                }
 
-            return true;
-        }, 100);
+                return true;
+            },
+            100
+        );
     }
 
     public function getConfig()
