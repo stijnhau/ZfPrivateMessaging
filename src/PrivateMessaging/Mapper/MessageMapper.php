@@ -14,6 +14,22 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     protected $tableName = "message";
     protected $sortDirection = "DESC";
 
+    /**
+     * @return the $sortDirection
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
+    /**
+     * @param string $sortDirection
+     */
+    public function setSortDirection($_sortDirection)
+    {
+        $this->sortDirection = $_sortDirection;
+    }
+
     public function findById($messageId)
     {
         $select = $this->getSelect();
@@ -65,21 +81,5 @@ class MessageMapper extends AbstractDbMapper implements MessageMapperInteface
     public function setTableName($tableName)
     {
         $this->tableName = $tableName;
-    }
-
-    /**
-     * @return the $sortDirection
-     */
-    public function getSortDirection()
-    {
-        return $this->sortDirection;
-    }
-
-    /**
-     * @param string $sortDirection
-     */
-    public function setSortDirection($_sortDirection)
-    {
-        $this->sortDirection = $_sortDirection;
     }
 }

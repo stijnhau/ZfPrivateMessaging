@@ -19,22 +19,6 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     protected $messageTableName = "message";
     protected $sortDirection = "DESC";
 
-    /**
-     * @return the $sortDirection
-     */
-    public function getSortDirection()
-    {
-        return $this->sortDirection;
-    }
-
-    /**
-     * @param string $sortDirection
-     */
-    public function setSortDirection($sortDirection)
-    {
-        $this->sortDirection = $sortDirection;
-    }
-
     public function getTableName()
     {
         return $this->tableName;
@@ -53,6 +37,22 @@ class MessageReceiverMapper extends AbstractDbMapper implements MessageReceiverM
     public function getMessageTableName()
     {
         return $this->messageTableName;
+    }
+
+    /**
+     * @return the $sortDirection
+     */
+    public function getSortDirection()
+    {
+        return $this->sortDirection;
+    }
+
+    /**
+     * @param string $sortDirection
+     */
+    public function setSortDirection($sortDirection)
+    {
+        $this->sortDirection = $sortDirection;
     }
 
     public function findById($id)
