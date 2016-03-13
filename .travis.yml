@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+  - 7.0
+
+before_script:
+  - composer self-update
+  - composer install --dev --prefer-source;
+
+script:
+  - ./vendor/bin/phpunit --bootstrap=tests/bootstrap.php
+  - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./tests/
+
+
+notifications:
+  email: stijnhau@gmail.com
+
+matrix:
+  fast_finish: true

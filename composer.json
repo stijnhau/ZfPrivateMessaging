@@ -6,6 +6,10 @@
     "zendframework/zendframework" : "2.*",
     "zf-commons/zfc-user" : "1.*"
   },
+      "require-dev" : {
+        "phpunit/phpunit" : ">=3.7,<4",
+        "squizlabs/php_codesniffer" : "1.4.*"
+    },
   "authors" : [ {
     "name" : "Stijnhau",
     "email" : "stijnhau@gmail.com"
