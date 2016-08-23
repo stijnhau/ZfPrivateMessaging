@@ -1,6 +1,6 @@
 {
-  "name" : "stijnhau/private-messaging",
-  "description" : "A Zend Framework 2 module based on ZfcUser which enables private messaging between users",
+  "name" : "stijnhau/zf-private-messaging",
+  "description" : "A Zend Framework module based on ZfcUser which enables private messaging between users",
   "require" : {
     "php" : ">=5.4",
     "zendframework/zendframework" : "2.*",
@@ -25,5 +25,5 @@
     "rwoverdijk/assetmanager" : "To use assets(js, css) provided by this module"
   },
   "type" : "library",
-  "homepage" : "https://github.com/stijnhau/PrivateMessaging"
+  "homepage" : "https://github.com/stijnhau/ZfPrivateMessaging"
 }
