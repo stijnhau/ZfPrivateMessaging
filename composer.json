@@ -2,7 +2,7 @@
   "name" : "stijnhau/zf-private-messaging",
   "description" : "A Zend Framework module based on ZfcUser which enables private messaging between users",
   "require" : {
-    "php" : ">=5.4",
+    "php" : ">=5.6",
     "zf-commons/zfc-user" : "3.*"
   },
       "require-dev" : {
