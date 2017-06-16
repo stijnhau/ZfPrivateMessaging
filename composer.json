@@ -3,8 +3,7 @@
   "description" : "A Zend Framework module based on ZfcUser which enables private messaging between users",
   "require" : {
     "php" : ">=5.4",
-    "zendframework/zendframework" : "2.*",
-    "zf-commons/zfc-user" : "1.*"
+    "zf-commons/zfc-user" : "3.*"
   },
       "require-dev" : {
         "phpunit/phpunit" : ">=3.7,<4",
