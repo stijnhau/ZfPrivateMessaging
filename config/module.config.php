@@ -1,4 +1,9 @@
 <?php
+namespace PrivateMessaging;
+
+use Zend\Router\Http\Segment;
+use Zend\Router\Http\Literal;
+
 return array(
     'translator' => array(
         'translation_file_patterns' => array(
@@ -41,7 +46,7 @@ return array(
                 'may_terminate' => true,
                 'child_routes' => array(
                     'list' => array(
-                        'type' => 'Segment',
+                        'type' => Segment::class,
                         'options' => array(
                             'route' => '/:type[/][page/:page[/]]',
                         ),
@@ -51,7 +56,7 @@ return array(
                         )
                     ),
                     'compose' => array(
-                        'type' => 'Literal',
+                        'type' => Literal::class,
                         'options' => array(
                             'route' => '/compose',
                             'defaults' => array(
@@ -60,7 +65,7 @@ return array(
                         )
                     ),
                     'info' => array(
-                        'type' => 'Segment',
+                        'type' => Segment::class,
                         'options' => array(
                             'route' => '/:message_id',
                             'defaults' => array(
@@ -72,7 +77,7 @@ return array(
                         )
                     ),
                     'delete_receiver' => array(
-                        'type' => 'Segment',
+                        'type' => Segment::class,
                         'options' => array(
                             'route' => '/delete-receiver/:message_id[/]',
                             'defaults' => array(
@@ -81,7 +86,7 @@ return array(
                         )
                     ),
                     'delete_sender' => array(
-                        'type' => 'Segment',
+                        'type' => Segment::class,
                         'options' => array(
                             'route' => '/delete-sender/:message_id[/]',
                             'defaults' => array(
